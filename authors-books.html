@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Book List</title>
+  <script src="js/authors-books.js" type="module"></script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <nav>
@@ -19,5 +21,18 @@
         <li><a href="login.html" title="Log in page">Log in</a></li>
       </ul>
   </nav>
+  <main>
+    <section id="book-list">
+    </section>
+  </main>
+  
+  <template class="book-card">
+    <article class="book">
+      <h2></h2>
+      <p><span class="author"></span> - <span class="year"></span></p>
+      <p>Published by: <span class="publisher"></span></p>
+      <a class="link" href="">See more</a>
+    </article>
+  </template>
 </body>
 </html>

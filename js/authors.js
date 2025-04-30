@@ -11,7 +11,12 @@ const showAuthors = async () => {
   
   books.forEach(author => {
     const card = document.querySelector('.author-card').content.cloneNode(true);
-    card.querySelector('h2').innerText = author.author_name;
+    card.querySelector('a').innerText = author.author_name;
+
+    card.querySelectorAll('a').forEach(link => {
+      link.href = `authors-books.html?a=${author.author_id}`;
+    });
+
     fragment.append(card);
   });
   
