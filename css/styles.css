@@ -28,3 +28,17 @@ a {
     font-family: var(--bodyFont);
     font-size: var(--fontSizeP);
 }
+
+button {
+    border: none;
+    background-color: var(--CTAColor);
+    color: var(--bookCardBg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadows);
+    transition: 300ms;
+}
+
+button:hover {
+    background-color: var(--CTAhover);
+}
