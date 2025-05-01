@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book List</title>
   <script src="js/books.js" type="module"></script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/books.css">
 </head>
+
 <body>
   <nav>
     <div id="logo">
@@ -16,23 +19,34 @@
       <li><a href="books.html" title="Book page">Books</a></li>
       <li><a href="authors.html" title="Authors page">Authors</a></li>
     </ul>
-    <ul>    
-        <li><a href="signup.html" title="Sign up page">Sign up</a></li>
-        <li><a href="login.html" title="Log in page">Log in</a></li>
-      </ul>
+    <ul>
+      <li><a href="signup.html" title="Sign up page">Sign up</a></li>
+      <li><a href="login.html" title="Log in page">Log in</a></li>
+    </ul>
   </nav>
   <main>
+    <input type="search" placeholder="Search">
     <section id="book-list">
     </section>
   </main>
-  
+
   <template class="book-card">
     <article class="book">
-      <h2></h2>
-      <p><span class="author"></span> - <span class="year"></span></p>
-      <p>Published by: <span class="publisher"></span></p>
-      <a class="link" href="">See more</a>
+      <div class="img-con">
+        <img src="img/bookcover.webp" alt="">
+      </div>
+      <div class="content-con">
+        <div>
+          <h2></h2>
+          <p>Written by: <span class="author"></span> - <span class="year"></span></p>
+          <p>Published by: <span class="publisher"></span></p>
+        </div>
+        <div>
+          <a class="link" href="">See more</a>
+        </div>
+      </div>
     </article>
   </template>
 </body>
+
 </html>

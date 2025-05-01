@@ -2,12 +2,20 @@
 
 
 :root {
---bookCardBg: #FFFFFF;
---mainBg: #FAF5EF;
---subTextColor: #5D5E5E;
---titleColor: #1B263B;
---bodtTextColor: #0D0D0E;
+    /* COLORS */
+    --bookCardBg: #FFFFFF;
+    --mainBg: #FAF5EF;
+    --subTextColor: #5D5E5E;
+    --titleColor: #1B263B;
+    --CTAColor: #003AA7;
+    --bodyTextColor: #0D0D0E;
 
---headerFont: Georgia, serif;
---bodyFont: 'Open Sans', Arial, sans serif;
+    /* FONTS */
+    --headerFont: Georgia, serif;
+    --bodyFont: 'Open Sans', Arial, sans serif;
+
+    --fontSizeTitleCard: 1.5rem;
+    --fontSizeP: 0.8rem;
+
+    --shadows: 2px 3px 10px 0px rgba(0, 0, 0, 0.26);
 }
