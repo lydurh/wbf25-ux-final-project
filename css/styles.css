@@ -20,9 +20,11 @@ h2,
 h3,
 h4 {
     font-family: var(--headerFont);
+    color: var(--titleColor);
 }
 
 p,
 a {
     font-family: var(--bodyFont);
+    font-size: var(--fontSizeP);
 }

@@ -8,14 +8,17 @@
     --subTextColor: #5D5E5E;
     --titleColor: #1B263B;
     --CTAColor: #003AA7;
+    --CTAhover: #3F5682;
     --bodyTextColor: #0D0D0E;
 
     /* FONTS */
     --headerFont: Georgia, serif;
     --bodyFont: 'Open Sans', Arial, sans serif;
 
-    --fontSizeTitleCard: 1.5rem;
+    --fontSizeTitleCard: 1.3rem;
     --fontSizeP: 0.8rem;
+    --fontSizeMobileTitleCard: 1rem;
+    --fontSizeMobileP: 0.6rem;
 
     --shadows: 2px 3px 10px 0px rgba(0, 0, 0, 0.26);
 }
