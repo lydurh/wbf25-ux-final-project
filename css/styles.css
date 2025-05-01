@@ -1,2 +1,44 @@
 @import 'variables.css';
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--mainBg);
+
+    main {
+        max-width: 1024px;
+        margin: auto;
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--headerFont);
+    color: var(--titleColor);
+}
+
+p,
+a {
+    font-family: var(--bodyFont);
+    font-size: var(--fontSizeP);
+}
+
+button {
+    border: none;
+    background-color: var(--CTAColor);
+    color: var(--bookCardBg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadows);
+    transition: 300ms;
+}
+
+button:hover {
+    background-color: var(--CTAhover);
+}
