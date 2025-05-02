@@ -58,8 +58,7 @@ nav {
     z-index: 100;
 
 
-    #logo {
-        width: 100%;
+    .logo {
 
         a {
             display: flex;
@@ -82,27 +81,90 @@ nav {
 
 
 
-    #menu {
+
+    ul {
         display: flex;
-        justify-content: space-between;
+        gap: 1rem;
         width: 100%;
+        justify-content: end;
 
-        ul {
-            display: flex;
-            gap: 1rem;
+        li {
+            list-style-type: none;
 
-            li {
-                list-style-type: none;
 
-                a {
-                    text-decoration: none;
-                    font-family: var(--bodyFont);
-                    color: var(--titleColor);
-                    font-size: 1rem;
+            a {
+                text-decoration: none;
+                font-family: var(--bodyFont);
+                color: var(--titleColor);
+                font-size: 1rem;
 
-                }
             }
         }
     }
 
+
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    background-color: var(--mainBg);
+    box-shadow: var(--shadows);
+    z-index: 100;
+
+    .logo {
+
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--titleColor);
+            font-size: var(--fontSizeTitleCard);
+            font-family: var(--headerFont);
+            font-weight: bold;
+            width: 100%;
+        }
+
+        img {
+            height: 50px;
+            width: 50px;
+
+        }
+    }
+
+    p {
+        width: 100%;
+        text-align: right;
+        font-family: var(--bodyFont);
+        font-size: var(--fontSizeP);
+        color: var(--titleColor);
+        font-size: 1rem;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        text-align: right;
+        font-family: var(--bodyFont);
+
+        li {
+            list-style-type: none;
+
+            a {
+                text-decoration: none;
+                font-family: var(--bodyFont);
+                color: var(--titleColor);
+                font-size: 1rem;
+
+            }
+        }
+    }
 }
