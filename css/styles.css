@@ -13,6 +13,7 @@ body {
     main {
         max-width: 1024px;
         margin: auto;
+        padding-top: 82px;
     }
 }
 
@@ -42,4 +43,66 @@ button {
 
 button:hover {
     background-color: var(--CTAhover);
+}
+
+/*  NAV BAR  */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    background-color: var(--mainBg);
+    box-shadow: var(--shadows);
+    z-index: 100;
+
+
+    #logo {
+        width: 100%;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--titleColor);
+            font-size: var(--fontSizeTitleCard);
+            font-family: var(--headerFont);
+            font-weight: bold;
+        }
+
+        img {
+            height: 50px;
+            width: 50px;
+
+        }
+    }
+
+
+
+    #menu {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        ul {
+            display: flex;
+            gap: 1rem;
+
+            li {
+                list-style-type: none;
+
+                a {
+                    text-decoration: none;
+                    font-family: var(--bodyFont);
+                    color: var(--titleColor);
+                    font-size: 1rem;
+
+                }
+            }
+        }
+    }
+
 }
