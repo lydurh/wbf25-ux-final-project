@@ -12,8 +12,8 @@ const showBook = async () => {
   const book = document.createDocumentFragment();
   
   
+  document.querySelector('title').innerText = data.title;
   document.querySelector('h2').innerText = data.title;
-
   
   document.querySelector('#book').append(book);
 };
