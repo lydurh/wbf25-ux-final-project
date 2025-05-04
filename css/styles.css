@@ -168,3 +168,16 @@ footer {
         }
     }
 }
+
+input {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: var(--shadows);
+    padding: 1rem;
+    color: var(--subTextColor);
+}
+
+input:focus {
+    outline: 1px solid var(--CTAColor);
+}

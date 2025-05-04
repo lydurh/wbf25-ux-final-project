@@ -1,0 +1,32 @@
+main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: calc(100vh - 115px);
+    gap: 1rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 500px;
+        justify-content: center;
+        gap: 1rem;
+
+        div {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+}
+
+/* Removes the arrows on number input field*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
