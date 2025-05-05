@@ -10,14 +10,21 @@ const showBook = async () => {
   const response = await fetch(`${BASE_URL}/books/${BOOK_ID}`);
   const data = await response.json();
   const book = document.createDocumentFragment();
-  
-  
+  const img = document.querySelector('#cover')
+
   document.querySelector('title').innerText = data.title;
+  document.querySelector('#breadcrumb_book').innerText = data.title;
   document.querySelector('h2').innerText = data.title;
+  document.querySelector('.author').innerText = data.author;
+  document.querySelector('.year').innerText = data.publishing_year;
+  document.querySelector('.publisher').innerText = data.publishing_company;
   
+  img.setAttribute('src', data.cover ? data.cover : 'img/bookcover.webp');
+  img.setAttribute('alt', `${data.title}`)
+
   document.querySelector('#book').append(book);
 };
-
+console.log(showBook());
 showBook();
 
 

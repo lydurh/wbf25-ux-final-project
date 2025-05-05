@@ -1,5 +1,7 @@
 @import 'variables.css';
 @import 'authors.css';
+@import 'home.css';
+
 
 * {
     margin: 0;
