@@ -31,18 +31,20 @@
     </div>
   </nav>
   <main>
-    <h1>Our book collection</h1>
-    <input type="search" placeholder="Search">
+    <div id="search-container">
+      <h1>Our book collection</h1>
+      <input id="search-input" type="search" placeholder="Search">
+    </div>
     <section id="book-list">
     </section>
-    <button>Show more</button>
+    <button class="show-more-button">Show more</button>
   </main>
 
   <template class="book-card">
     <article class="book">
       <div class="img-con">
-        <img src="img/bookcover.webp" alt="">
       </div>
+        <img src="img/bookcover.webp" alt="">
       <div class="content-con">
         <div>
           <h2></h2>
