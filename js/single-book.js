@@ -13,6 +13,7 @@ const showBook = async () => {
   const img = document.querySelector('#cover')
 
   document.querySelector('title').innerText = data.title;
+  document.querySelector('#breadcrumb_author').innerText = data.author;
   document.querySelector('#breadcrumb_book').innerText = data.title;
   document.querySelector('h2').innerText = data.title;
   document.querySelector('.author').innerText = data.author;

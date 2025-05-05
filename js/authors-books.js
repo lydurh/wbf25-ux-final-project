@@ -32,6 +32,7 @@ const showAuthorBooks = async () => {
 
     document.querySelector('title').innerText = fullBook.author;
     document.querySelector('.author').innerText = fullBook.author;
+    document.querySelector('#breadcrumb_author').innerText = fullBook.author;
 
     card.querySelector('h2').innerText = fullBook.title;
     card.querySelector('.author').innerText = fullBook.author
