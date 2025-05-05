@@ -22,13 +22,13 @@ document.querySelector('#form-login').addEventListener('submit', (e) => {
         console.log(data);
         if (Object.keys(data).includes('user_id')) {
             sessionStorage.setItem('user_id', data.user_id);
-            sessionStorage.setItem('user_id', data.token);
-            // loadLoanedBooks(data.user_id);
-          if (data.user_id === 2679) {
-                          window.location.href = "admin.html";
-                      } else {
-                          window.location.href = "profile.html";
-                      }
+            sessionStorage.setItem('user_token', data.auth_token);
+            loadProfile(data.user_id)
+        if (data.user_id === 2679) {
+                        window.location.href = "admin.html";
+                    } else {
+                        window.location.href = "profile.html";
+                    }
         } else {
             handleError(data.error);
         }
@@ -36,31 +36,16 @@ document.querySelector('#form-login').addEventListener('submit', (e) => {
     .catch(handleError);
 });
 
+const loadProfile = (user_id) => {
 
-//     const tokenHeader = new Headers({
-//         'X-Session-Token': sessionStorage.getItem('loaned-books')
-//     });
+    const tokenHeader = new Headers({
+        'X-Session-Token': sessionStorage.getItem('user_token')
+    });
 
-//     fetch(`${BASE_URL}/users/${user_id}`,
-//         {
-//             method : 'GET',
-//             headers: tokenHeader
-//         }
-//     )
-//     .then(response => response.json())
-//     .then(data => {
-//       if (Object.keys(data).includes("user_id")) {
-//         console.log("Login successful, user_id:", data.user_id);
-//         sessionStorage.setItem("user_id", data.user_id);
-        
-//         if (data.user_id === 2679) {
-//             window.location.href = "admin.html";
-//         } else {
-//             window.location.href = "profile.html";
-//         }
-//     } else {
-//         APIerrorResponse(data.error);
-//     }
-//     })
-//     .catch(handleError);
-// };
+    fetch(`${BASE_URL}/users/${user_id}`,
+        {
+            headers: tokenHeader
+        }
+    )
+    .catch(handleError);
+};

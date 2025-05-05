@@ -94,17 +94,17 @@ document.querySelector('#form-signup').addEventListener('submit', (e) => {
     params.append('birth_date', dateBirth);
 
     fetch(`${BASE_URL}/users`, {
-      method: "POST",
-      body: params,
-  })
+    method: "POST",
+    body: params,
+    })
   .then((response) => response.json())
   .then((data) => {
-      if (Object.keys(data).includes("user_id")) {
-          console.log(data.user_id, "- Signup successfull");
-          window.location.href = "login.html";
-      } else {
-          APIerrorResponse(data.error);
-      }
+    if (Object.keys(data).includes("user_id")) {
+        console.log(data.user_id, "- Signup successfull");
+        window.location.href = "login.html";
+    } else {
+        APIerrorResponse(data.error);
+    }
   })
   .catch(APIerrorResponse);
 

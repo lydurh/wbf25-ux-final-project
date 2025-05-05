@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/profile.js" type="module"></script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/forms.css">
   <title>Document</title>
 </head>
 
@@ -26,7 +28,29 @@
     </ul>
   </nav>
   <main>
-    <h1>Hello profile</h1>
+    <header>
+      <h1 id="profile-header"></h1>
+    </header>
+    <section>
+      <h2>Edit profile</h2>
+      <form id="form-profile" type="submit">
+        <div>
+          <input id="firstName" type="text" value="">
+          <input id="lastName" type="text" value="">
+        </div>
+        <div>
+          <input id="date" type="date" value="" max="2024-12-31">
+          <input id="email" type="email" value="">
+        </div>
+        <div>
+          <input id="address" type="text" value="">
+          <input id="phoneNumber" type="number" value="">
+        </div>
+      </form>
+    </section>
+  
+
+
   </main>
   <footer>
     <div class="logo">
