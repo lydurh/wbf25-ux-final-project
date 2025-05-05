@@ -1,6 +1,7 @@
 @import 'variables.css';
 @import 'authors.css';
 @import 'home.css';
+@import 'singlebook.css';
 
 
 * {
@@ -112,7 +113,38 @@ nav {
         }
     }
 
+}
+.breadcrumb-container {
+    padding: 1rem 0;
 
+ul.breadcrumb{
+    breadcrumb {
+    padding: 2rem 3rem;
+    list-style: none;
+    }
+
+
+    li {
+        display: inline;
+        font-size: 1.2rem;
+    }
+
+    li+li:before {
+        padding: 0.5rem;
+        color: var(--titleColor);
+        content: "/\00a0";
+    }
+
+    li a {
+        color: var(--titleColor);
+        text-decoration: none;
+    }
+
+    li a:hover {
+        color: var(--titleColor);
+        text-decoration: underline;
+    } 
+}
 }
 
 footer {
