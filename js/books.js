@@ -1,21 +1,12 @@
 import { BASE_URL } from "./info.js";
 
-const showRandomBooks = async (replace = true) => {
+const showRandomBooks = async () => {
   const NUM_BOOKS = 10;
+
   const response = await fetch(`${BASE_URL}/books?n=${NUM_BOOKS}`);
   const data = await response.json();
-  const books = data;
-  displayBooks(books, replace);
-};
+  const books = data.books || data.results || data;
 
-const displayBooks = (books, replace = true) => {
-  const bookListContainer = document.querySelector('#book-list');
-
-
-  if (replace) {
-    bookListContainer.innerHTML = '';
-  }
-  
   const fragment = document.createDocumentFragment();
 
   // Fetch full book info for each book to get the image
@@ -51,10 +42,4 @@ const displayBooks = (books, replace = true) => {
   document.querySelector('#book-list').append(fragment);
 };
 
-  showRandomBooks();
-  initializeSearch();
-  const showMoreButton = document.querySelector(".show-more-button");
-  if (showMoreButton) {
-    showMoreButton.addEventListener("click", showMoreBooks);
-  }
-});
+showRandomBooks();
