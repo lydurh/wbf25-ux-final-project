@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/forms.css">
+  <script src="js/signup.js" type="module"></script>
+
+  
   <title>Sign up</title>
 </head>
 
@@ -28,19 +31,20 @@
   </nav>
   <main>
     <h1>Sign up</h1>
+    <span id="messageContainer-main"></span>
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-    <form action="">
+    <form id="form-signup" action="">
       <div>
-        <input type="text" placeholder="First name">
-        <input type="text" placeholder="Last name">
+        <input id="firstName" type="text" placeholder="First name">
+        <input id="lastName" type="text" placeholder="Last name">
       </div>
-      <input type="date" placeholder="Date of birth" max="2024-12-31">
-      <input type="email" placeholder="Email">
-      <input type="text" placeholder="Address">
-      <input type="number" placeholder="Phone number">
-      <input type="password" placeholder="Password">
-      <input type="password" placeholder="Repeat Password">
-      <button>Sign up</button>
+      <input id="date" type="date" placeholder="Date of birth" max="2024-12-31">
+      <input id="email" type="email" placeholder="Email">
+      <input id="address" type="text" placeholder="Address">
+      <input id="phoneNumber" type="number" placeholder="Phone number">
+      <input id="password" type="password" placeholder="Password">
+      <input id="repeatPassword" type="password" placeholder="Repeat Password">
+      <button type="submit">Sign up</button>
     </form>
   </main>
   <footer>

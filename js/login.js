@@ -1,0 +1,63 @@
+import { BASE_URL } from './info.js';
+import { APIerrorResponse, handleError } from './handle-errors.js';
+
+document.querySelector('#form-login').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
+
+    const params = new URLSearchParams();
+    params.append('email', email);
+    params.append('password', password);
+
+    fetch(`${BASE_URL}/auth/login`,
+        {
+            method: 'POST',
+            body: params
+        }
+    )
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (Object.keys(data).includes('user_id')) {
+            sessionStorage.setItem('user_id', data.user_id);
+            sessionStorage.setItem('user_id', data.token);
+            loadLoanedBooks(data.user_id);
+
+            // window.location.href = 'index.html';
+        } else {
+            handleError(data.error);
+        }
+    })
+    .catch(handleError);
+});
+
+const loadLoanedBooks = (userID) => {
+
+    const tokenHeader = new Headers({
+        'X-Session-Token': sessionStorage.getItem('loaned-books')
+    });
+
+    fetch(`${BASE_URL}/users/${userID}/favourites`,
+        {
+            headers: tokenHeader
+        }
+    )
+    .then(response => response.json())
+    .then(data => {
+      if (Object.keys(data).includes("user_id")) {
+        console.log("Login successful, user_id:", data.user_id);
+        sessionStorage.setItem("user_id", data.user_id);
+        
+        if (data.user_id === 2679) {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "profile.html";
+        }
+    } else {
+        APIerrorResponse(data.error);
+    }
+    })
+    .catch(handleError);
+};
