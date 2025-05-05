@@ -1,0 +1,91 @@
+
+section#landingPage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem 1rem;
+    gap: 2rem;
+
+#lp-content {
+    display: flex;
+    flex-direction: column;
+
+    > header {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        max-width: 42ch;
+    }
+    }
+
+        .CTA {
+        background-color: var(--CTAColor);
+        color: var(--bookCardBg);
+        text-decoration: none;
+        border-radius: 0.5rem;
+        padding: 1rem 4rem;
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 1rem;
+        box-shadow: var(--shadows);
+        transition: 300ms;
+
+        &:hover {
+            background-color: var(--CTAhover);
+        }
+    }
+    
+        img {
+        display: none;
+        }
+    }
+    
+    @media (min-width: 601px) {
+        section#landingPage {
+        flex-direction: row;
+        align-items: flex-start; 
+        justify-content: center;
+        gap: 4.5rem;
+        /*border: solid black;*/
+        /*padding: 0 2rem 0 2rem;*/
+        }
+    
+        #lp-content {
+        
+        display: flex;
+        flex-direction: column;
+        /*justify-content: space-between;*/
+        align-items: flex-start;
+        text-align: left;
+        height: 300px;
+
+        
+        .CTA {
+            margin-top: auto;
+            
+        }
+        > header {
+            font-size: 2rem;
+        }
+        p{
+            font-size: 1.5rem;
+            }
+        }
+    
+        #img-container {
+
+        display: flex;
+        align-items: flex-start; 
+        }
+    
+        #img-container img {
+        display: block !important;
+        height: 300px;
+        width: auto;
+        object-fit: cover; 
+        }
+    }
+    
