@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Author bookList</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/books.css">
   <script src="js/authors-books.js" type="module"></script>
 </head>
 
@@ -27,6 +28,8 @@
     </ul>
   </nav>
   <main>
+    <h1>Books by <span class="author"></span></h1>
+    <input type="search" placeholder="Search">
     <section id="book-list">
     </section>
   </main>
@@ -43,10 +46,19 @@
   </footer>
   <template class="book-card">
     <article class="book">
-      <h2></h2>
-      <p><span class="author"></span> - <span class="year"></span></p>
-      <p>Published by: <span class="publisher"></span></p>
-      <a class="link" href="">See more</a>
+      <div class="img-con">
+        <img src="img/bookcover.webp" alt="">
+      </div>
+      <div class="content-con">
+        <div>
+          <h2></h2>
+          <p>Written by: <span class="author"></span> - <span class="year"></span></p>
+          <p>Published by: <span class="publisher"></span></p>
+        </div>
+        <div>
+          <a class="link" href="">Read more</a>
+        </div>
+      </div>
     </article>
   </template>
 </body>
