@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/singlebook.css">
   <title>Single book</title>
   <script src="js/single-book.js" type="module"></script>
 </head>
@@ -27,11 +28,50 @@
     </ul>
   </nav>
   <main>
-
     <section id="book">
-      <h2>
-
-      </h2>
+      <div class="breadcrumb-container">
+        <ul class="breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li><a href="/books.html">Books</a></li>
+          <li id="breadcrumb_book">Book</li>
+        </ul> 
+      </div>
+      <article class="singlebook">
+      <div class="img-con">
+        <img id="cover" src="img/bookcover.webp" alt="">
+      </div>
+      <div class="content-con">
+        <div>
+          <h2></h2>
+          <p>Written by: <span class="author"></span> - <span class="year"></span></p>
+          <p>Published by: <span class="publisher"></span></p>
+        </div>
+        <div>
+          <a class="link" href="">Loan</a>
+        </div>
+      </div>
+    </article>
+    </section>
+    <section id="loan-history">
+      <table>
+        <thead>
+          <h2>Bookname - Loan history</h2>
+            <tr>
+                <th id="username">Username</th>
+                <th id="date">Date</th>
+            </tr>
+        </thead>
+        <tbody id="loanHistoryBody">
+          <tr>
+            <td>Obi wan</td>
+            <td>may 1st 2025</td>
+          </tr>
+          <tr>
+            <td>R2d2</td>
+            <td>april 21st 2025</td>
+          </tr>
+        </tbody>
+    </table>
     </section>
   </main>
   <footer>
