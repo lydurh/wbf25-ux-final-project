@@ -123,9 +123,12 @@ ul.breadcrumb{
     list-style: none;
     }
 
-
     li {
         display: inline;
+        font-size: initial; /* or whatever base size you'd prefer */
+    }
+    
+    li:last-of-type {
         font-size: 1.2rem;
     }
 
