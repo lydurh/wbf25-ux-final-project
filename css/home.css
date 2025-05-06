@@ -1,4 +1,6 @@
-
+main {
+    justify-content: center;
+}
 section#landingPage {
     display: flex;
     flex-direction: column;
@@ -49,7 +51,6 @@ section#landingPage {
         align-items: flex-start; 
         justify-content: center;
         gap: 4.5rem;
-        /*border: solid black;*/
         /*padding: 0 2rem 0 2rem;*/
         }
     
@@ -57,22 +58,25 @@ section#landingPage {
         
         display: flex;
         flex-direction: column;
-        /*justify-content: space-between;*/
+        justify-content: space-between;
         align-items: flex-start;
         text-align: left;
         height: 300px;
-
+        
+        div{
+        > header {
+            font-size: 2rem;
+            padding-bottom: 0.5rem;
+        }
+        p{
+            font-size: 1.5rem;
+            }
+        }
         
         .CTA {
             margin-top: auto;
             
         }
-        > header {
-            font-size: 2rem;
-        }
-        p{
-            font-size: 1.5rem;
-            }
         }
     
         #img-container {
