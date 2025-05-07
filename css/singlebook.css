@@ -74,7 +74,7 @@ main {
     
     }        
 
-            section#loan-history{
+            section#loan-history-section{
                 display: flex;
                 flex-direction: column;
                 width: 100%;
@@ -152,7 +152,7 @@ main {
             }
           }
 
-section#loan-history{
+section#loan-history-section{
         >h2 {
         font-size: var(--fontSizeTitleCard);
         }
@@ -188,4 +188,9 @@ section#loan-history{
         }
     }
     }
+
+.loaned{
+    background-color: var(--subTextColor);
+    pointer-events: none;
+}
 

@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
-  <title>Document</title>
+  <script type="module" src="js/nav.js"></script>
+  <title>Home</title>
 
 </head>
 
@@ -21,11 +22,26 @@
       <li><a href="books.html" title="Book page">Books</a></li>
       <li><a href="authors.html" title="Authors page">Authors</a></li>
     </ul>
-    <ul>
+
+
+    <ul id="admin-logged">
+      <li><a href="admin.html">Admin</a></li>
+      <li><button class="btn-logout">Logout</button></li>
+    </ul>
+    
+    <ul id="user-logged">
+      <li><a href="profile.html">Profile</a></li>
+      <li><button class="btn-logout">Logout</button></li>
+    </ul>
+
+
+    <ul id="not-logged">
       <li><a href="signup.html" title="Sign up page">Sign up</a></li>
       <li><a href="login.html" title="Log in page">Log in</a></li>
     </ul>
   </nav>
+
+
   <main>
 
     <section id="landingPage">
