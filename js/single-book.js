@@ -93,7 +93,9 @@ const LoanHistory = async () => {
   console.log(data)
   const loans = data.loans.reverse();
   
-  if (user_id !== '2679') {
+  const adminID ='2679'
+
+  if (user_id !== adminID) {
     document.querySelector('#loan-history-section').classList.add('hidden');
     return;
   }
