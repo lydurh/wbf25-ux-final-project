@@ -113,7 +113,7 @@ const checkUserLogged = async () => {
     document.querySelector('#loan-history-section').classList.add('hidden');
     
   } else {
-    LoanHistory()
+    LoanHistory();
   }
 }
 checkUserLogged();
