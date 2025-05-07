@@ -91,17 +91,22 @@ const LoanHistory = async () => {
   });
   const data = await response.json();
   console.log(data)
-  const loans = data.loans;
+  const loans = data.loans.reverse();
+  
+  if (user_id !== '2679') {
+    document.querySelector('#loan-history-section').classList.add('hidden');
+    return;
+  }
+    const fragment = document.createDocumentFragment();
 
-  const fragment = document.createDocumentFragment();
+    loans.forEach(loan => {
+      const card = document.querySelector("#loan-history").content.cloneNode(true);
+      card.querySelector(".loan-date").innerText = loan.loan_date;
 
-  loans.forEach(loan => {
-    const card = document.querySelector("#loan-history").content.cloneNode(true);
-    card.querySelector(".loan-date").innerText = loan.loan_date;
+      fragment.append(card);
+    });
+    document.querySelector("#loan-history-table").append(fragment);
+  };
 
-    fragment.append(card);
-  });
-  document.querySelector("#loan-history-table").append(fragment);
-};
 LoanHistory()
 

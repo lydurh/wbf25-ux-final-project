@@ -228,6 +228,9 @@ input:focus {
 }
 
 
+.hidden{
+    display: none !important;
+}
 
 /* CARD ANIMATION */
 .book-card-element {
