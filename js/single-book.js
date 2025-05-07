@@ -1,4 +1,5 @@
 import { BASE_URL } from './info.js';
+import { handleError} from './handle-errors.js'
 
 let BOOK_ID = new URLSearchParams(window.location.search);
 BOOK_ID = BOOK_ID.get('id');
@@ -28,19 +29,102 @@ const showBook = async () => {
 console.log(showBook());
 showBook();
 
+// Loan book func
+document.querySelector('#loan-book').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const markAsLoaned = this.innerText === 'Loaned';
+    let user_id = sessionStorage.getItem("user_id");
+    let user_token = sessionStorage.getItem("user_token");
+
+    const params = new URLSearchParams();
+    params.append('book_id', BOOK_ID);
+
+    //Fetching the book id when you're a user, so you need to be logged in
+    fetch(`${BASE_URL}/users/${user_id}/books/${BOOK_ID}`,
+        {
+          method: markAsLoaned ? 'POST' : 'DELETE',
+          method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Session-Token': user_token
+            },
+            body: params
+        }
+    )
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        this.innerText = markAsLoaned ? 'Loan' : 'Loaned';
+        this.classList.toggle("loaned", !markAsLoaned);
+        sessionStorage.setItem(`book_${BOOK_ID}_loaned`, !markAsLoaned);
+
+    })
+    .catch(handleError);
+});
 
 
-// fetch(`${BASE_URL}/books/${BOOK_ID}`)
-// .then(response => response.json())
-// .then(data => {
+// adds the class "Loaned" to a single book button if the book is loaned, even after refreshing
+document.addEventListener("DOMContentLoaded", function() {
+    const loanButton = document.querySelector('#loan-book');
+    const isLoaned = sessionStorage.getItem(`book_${BOOK_ID}_loaned`) === 'true';
+
+    if (isLoaned) {
+        loanButton.classList.add("loaned");
+        loanButton.innerText = 'Loaned';
+    } else {
+        loanButton.classList.remove("loaned");
+        loanButton.innerText = 'Loan';
+    }
+});
+
+
+// Admin
+const LoanHistory = async () => {
+
+  let user_id = sessionStorage.getItem("user_id");
+  let user_token = sessionStorage.getItem("user_token");
+  const response = await fetch(`${BASE_URL}/admin/${user_id}/books/${BOOK_ID}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Session-Token': user_token
+    }
+  });
+  const data = await response.json();
+  console.log(data)
+
+  const fragment = document.createDocumentFragment();
+
+  data.forEach(loan => {
+    const card = document.querySelector("#loan-history").content.cloneNode(true);
+    card.querySelector(".username").innerText = loan.user_id
+
+    fragment.append(card);
+  });
+  document.querySelector("loan-history-table").append(fragment);
+}
+LoanHistory()
+
+
+// const showAuthors = async () => {
+
+//   const response = await fetch(`${BASE_URL}/authors`);
+//   const data = await response.json();
   
-//     data = data.book[0];
-//     console.log(data);
+//   const books = data.author || data.results || data; 
+  
+//   const fragment = document.createDocumentFragment();
+  
+//   books.forEach(author => {
+//     const card = document.querySelector('.author-card').content.cloneNode(true);
+//     card.querySelector('a').innerText = author.author_name;
 
-//     document.querySelector('h2').innerText = data.title;
+//     card.querySelectorAll('a').forEach(link => {
+//       link.href = `authors-books.html?a=${author.author_id}`;
+//     });
 
-//     const book = document.createDocumentFragment();
-
-
-//     document.querySelector('#book').append(book);
-// })
+//     fragment.append(card);
+//   });
+  
+//   document.querySelector('#author-list').append(fragment);
+// };

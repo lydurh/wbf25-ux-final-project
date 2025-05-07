@@ -47,31 +47,22 @@
           <p>Published by: <span class="publisher"></span></p>
         </div>
         <div>
-          <a class="link" href="">Loan</a>
+          <button type="submit" id="loan-book" class="link">Loan</button>
         </div>
       </div>
     </article>
     </section>
-    <section id="loan-history">
-      <table>
-        <thead>
-          <h2>Bookname - Loan history</h2>
-            <tr>
-                <th id="username">Username</th>
-                <th id="date">Date</th>
-            </tr>
+    <section>
+    <table id="loan-history-table">
+      <thead>
+        <h2>Bookname - Loan history</h2>
+          <tr>
+              <th>Username</th>
+              <th>Date</th>
+          </tr>
         </thead>
-        <tbody id="loanHistoryBody">
-          <tr>
-            <td>Obi wan</td>
-            <td>may 1st 2025</td>
-          </tr>
-          <tr>
-            <td>R2d2</td>
-            <td>april 21st 2025</td>
-          </tr>
-        </tbody>
     </table>
+
     </section>
   </main>
   <footer>
@@ -85,6 +76,14 @@
       <li><a href="mailto:mail@mail.com">mail@mail.com</a></li>
     </ul>
   </footer>
+  <template id="loan-history">
+    <tbody class="loanHistoryBody">
+      <tr>
+        <td class="username">Obi wan</td>
+        <td class="loan-date">may 1st 2025</td>
+      </tr>
+    </tbody>
+  </template>
 </body>
 
 </html>
