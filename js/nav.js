@@ -29,5 +29,3 @@ if (user_id !== null) {
         window.location.href = 'index.html';
     });
 });
-
-console.log(".btn-logout")

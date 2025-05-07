@@ -93,12 +93,6 @@ const LoanHistory = async () => {
   console.log(data)
   const loans = data.loans.reverse();
   
-  const adminID ='2679'
-
-  if (user_id !== adminID) {
-    document.querySelector('#loan-history-section').classList.add('hidden');
-    return;
-  }
     const fragment = document.createDocumentFragment();
 
     loans.forEach(loan => {
@@ -110,5 +104,18 @@ const LoanHistory = async () => {
     document.querySelector("#loan-history-table").append(fragment);
   };
 
-LoanHistory()
+const checkUserLogged = async () => {
+
+  const adminID ='2679'
+  
+  let user_id = sessionStorage.getItem("user_id");
+  if (user_id !== adminID || !user_id) {
+    document.querySelector('#loan-history-section').classList.add('hidden');
+    
+  } else {
+    LoanHistory()
+  }
+}
+checkUserLogged();
+
 
