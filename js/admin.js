@@ -2,6 +2,33 @@ import { BASE_URL } from "./info.js";
 import { header } from './api.js';
 
 
+document.querySelector('#form_publisher').addEventListener('submit',(e)=> {
+  e.preventDefault();
+
+
+  let user_id = sessionStorage.getItem("user_id");
+  const publisherName = e.target.publisherName.value.trim();
+
+  const params = new URLSearchParams();
+  params.append('name', publisherName);
+
+
+
+
+  fetch(`${BASE_URL}/admin/${user_id}/publishers`, {
+  method: "POST",
+  body: params,
+  headers: header
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data)
+    
+});
+})
+
+
+
 const showAuthors = async () => {
 
     const response = await fetch(`${BASE_URL}/authors`);
@@ -76,5 +103,32 @@ document.querySelector('#form_book').addEventListener('submit',(e)=> {
       console.log(data)
       
 });
-
 })
+
+document.querySelector('#form_authors').addEventListener('submit',(e)=> {
+    e.preventDefault();
+
+
+    let user_id = sessionStorage.getItem("user_id");
+    const authorFirstName = e.target.authorFirstName.value.trim();
+    const authorLastName = e.target.authorLastName.value.trim();
+  
+
+    const params = new URLSearchParams();
+    params.append('first_name', authorFirstName);
+    params.append('last_name', authorLastName);
+
+
+
+    fetch(`${BASE_URL}/admin/${user_id}/authors`, {
+    method: "POST",
+    body: params,
+    headers: header
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      
+});
+})
+
