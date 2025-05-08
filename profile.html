@@ -47,20 +47,30 @@
     </header>
     <section>
       <h2>Edit profile</h2>
+      <p>Member since: <span id="membershipDate"></span></p>
       <form id="form-profile" type="submit">
         <div>
-          <input id="firstName" type="text" value="">
-          <input id="lastName" type="text" value="">
+          <input id="firstName" type="text" value="" disabled>
+          <input id="lastName" type="text" value="" disabled>
         </div>
         <div>
-          <input id="date" type="date" value="" max="2024-12-31">
-          <input id="email" type="email" value="">
+          <input id="date" type="date" value="" max="2024-12-31" disabled>
+          <input id="email" type="email" value="" disabled>
         </div>
         <div>
-          <input id="address" type="text" value="">
-          <input id="phoneNumber" type="number" value="">
+          <input id="address" type="text" value="" disabled>
+          <input id="phoneNumber" type="number" value="" disabled>
         </div>
+        <div>
+        <button id="updateUserBtn">Edit user</button>
+        <button class="hidden" id="saveUserBtn">Save user changes</button>
+      </div>
       </form>
+      <div>
+        <button id="deleteUserBtn">Delete user</button>
+      </div>
+      <p id="showSuccessMessage"></p>
+      <p id="errorText"></p>
     </section>
   
 
