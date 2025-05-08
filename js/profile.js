@@ -99,3 +99,34 @@ const editProfile = () => {
   })
 };
 editProfile();
+
+
+function deleteUser() {
+  let user_id = sessionStorage.getItem("user_id");
+
+  console.log(`delete user with id ${user_id}`);
+  if (!user_id) {
+      alert("User ID not found. Please log in again.");
+      return;
+  };
+  if (confirm("Are you sure you want to delete your account?")) {
+      fetch(`${BASE_URL}/users/${user_id}`, {
+      method: "DELETE",
+      headers: header
+
+      })
+      .then((response) => response.json())
+      .then((data) => {
+          if (data.status === "ok") {
+              alert("User deleted");
+              sessionStorage.removeItem("user_id");
+              window.location = "index.html"
+          } else {
+            APIerrorResponse(data.error);
+          }
+      })
+      .catch(APIerrorResponse);
+  }
+};
+
+document.querySelector("#deleteUserBtn").addEventListener("click", deleteUser);
