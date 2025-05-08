@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/forms.css">
   <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/admin.js"></script>
 </head>
 
 <body>
@@ -41,6 +43,45 @@
   </nav>
   <main>
     <h1>hello admin</h1>
+    <section id="Admin_form">
+      <article>
+        <header>
+          <h2>add book</h2>
+        </header>
+        <form id="form_book">
+          <input id="bookTitle" type="text" placeholder="Book title">
+          <select id="authorId" type="text"></select>
+            <select id="publisherId" type="text"></select>
+            <input id="publishingYear" type="number" min="0" max="2025" placeholder="Publishing year">
+            <div>
+              <button id="addBookBtn">Add</button>
+            </div>
+        </form>
+      </article>
+      <article>
+        <header>
+          <h2>add author</h2>
+        </header>
+        <form id="form_authors">
+          <input id="authorFirstName" type="text" placeholder="Author first name">
+          <input id="authorLastName" type="text" placeholder="Author last name">
+          <div>
+            <button id="addAuthorBtn">Add</button>
+          </div>
+        </form>
+      </article>
+      <article>
+        <header>
+          <h2>add publisher</h2>
+        </header>
+        <form id="form_publisher">
+          <input id="publisherName" type="text" placeholder="Publisher name">
+          <div>
+            <button id="addPublisherBtn">Add</button>
+          </div>
+        </form>
+      </article>
+    </section>
   </main>
   <footer>
     <div class="logo">
@@ -53,6 +94,12 @@
       <li><a href="mailto:mail@mail.com">mail@mail.com</a></li>
     </ul>
   </footer>
+  <template id="authorTemplate">
+    <option class="optionAuthorId" value=""></option>
+  </template>
+  <template id="publisherTemplate">
+    <option class="optionPublisherId" value=""></option>
+  </template>
 </body>
 
 </html>
