@@ -59,17 +59,25 @@ editBtn.addEventListener('click', (e)=> {
   editBtn.classList.add("hidden")
   saveBtn.classList.remove("hidden");
 })
+const params = new URLSearchParams();
+params.append('email', email);
+params.append('first_name', firstName);
+params.append('last_name', lastName);
+params.append('phone_number', phoneNumber);
+params.append('address', address);
+params.append('birth_date', date);
+
 form.addEventListener('submit', (e)=> {
   e.preventDefault();
   fetch(`${BASE_URL}/users/${user_id}`,{
     method: "PUT",
-    body: URLSearchParams,
+    body: params,
     headers : header
   })
   .then((response) => response.json())
   .then((data) => {
       if (data.status === "ok") {
-          showSuccessMessage("Changes saved!", "success", "main");
+          showSuccessMessage("Changes saved!", "success", "showSuccessMessage");
           form(false); // disable form after successfull submit
       } else {
       }
