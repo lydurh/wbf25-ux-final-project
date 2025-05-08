@@ -1,6 +1,6 @@
 import { BASE_URL } from "./info.js";
-import { APIerrorResponse} from './handle-errors.js';
-import {header} from './api.js';
+import { APIerrorResponse, handleError} from './handle-errors.js';
+import { header } from './api.js';
 
 const showProfile = async () => {
   let user_id = sessionStorage.getItem("user_id");
@@ -44,43 +44,58 @@ document.addEventListener('DOMContentLoaded', function(){
 showProfile();
 
 const editProfile = () => {
-let user_id = sessionStorage.getItem("user_id");
-let user_token = sessionStorage.getItem("user_token");
-const form = document.getElementById("form-profile");
-const editBtn = document.getElementById("updateUserBtn");
-const saveBtn = document.getElementById("saveUserBtn");
-const formInputs = form.querySelectorAll('input');
+  let user_id = sessionStorage.getItem("user_id");
+  let user_token = sessionStorage.getItem("user_token");
+  const form = document.getElementById("form-profile");
+  const editBtn = document.getElementById("updateUserBtn");
+  const saveBtn = document.getElementById("saveUserBtn");
+  const formInputs = form.querySelectorAll('input');
 
-editBtn.addEventListener('click', (e)=> {
-  e.preventDefault();
-  formInputs.forEach(input => {
-    input.disabled = false;
+  editBtn.addEventListener('click', (e)=> {
+    e.preventDefault();
+    formInputs.forEach(input => {
+      input.disabled = false;
+    })
+    editBtn.classList.add("hidden")
+    saveBtn.classList.remove("hidden");
   })
-  editBtn.classList.add("hidden")
-  saveBtn.classList.remove("hidden");
-})
-form.addEventListener('submit', (e)=> {
-  e.preventDefault();
-  fetch(`${BASE_URL}/users/${user_id}`,{
-    method: "PUT",
-    body: URLSearchParams,
-    headers : header
-  })
-  .then((response) => response.json())
-  .then((data) => {
-      if (data.status === "ok") {
-          showSuccessMessage("Changes saved!", "success", "main");
-          form(false); // disable form after successfull submit
-      } else {
-      }
-  })
-  .catch(APIerrorResponse);
 
-  formInputs.forEach(input => {
-    input.disabled = true;
+    
+  form.addEventListener('submit', (e)=> {
+    e.preventDefault();
+
+    
+      // Form submission
+      const firstName = e.target.firstName.value.trim();
+      const lastName = e.target.lastName.value.trim();
+      const email = e.target.email.value.trim();
+      const address = e.target.address.value.trim();
+      const phoneNumber = e.target.phoneNumber.value.trim();
+      const dateBirth = e.target.date.value.trim();
+
+      
+      const params = new URLSearchParams();
+      params.append('email', email);
+      params.append('first_name', firstName);
+      params.append('last_name', lastName);
+      params.append('phone_number', phoneNumber);
+      params.append('address', address);
+      params.append('birth_date', dateBirth);
+    
+    fetch(`${BASE_URL}/users/${user_id}`, {
+      method: 'PUT',
+      headers: header,
+      body: params,
+
+    })
+    .then((response) => response.json())
+    .catch(handleError);
+
+    formInputs.forEach(input => {
+      input.disabled = true;
+    })
+    saveBtn.classList.add("hidden")
+    editBtn.classList.remove("hidden");
   })
-  saveBtn.classList.add("hidden")
-  editBtn.classList.remove("hidden");
-})
 };
 editProfile();
