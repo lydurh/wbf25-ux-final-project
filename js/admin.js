@@ -1,4 +1,5 @@
 import { BASE_URL } from "./info.js";
+import { header } from './api.js';
 
 
 const showAuthors = async () => {
@@ -47,6 +48,33 @@ const showPublishers = async () => {
 };
 
 showPublishers();
+
+document.querySelector('#form_book').addEventListener('submit',(e)=> {
+    e.preventDefault();
+
+
+    let user_id = sessionStorage.getItem("user_id");
+    const bookTitle = e.target.bookTitle.value.trim();
+    const authorId = e.target.authorId.value.trim();
+    const publisherId = e.target.publisherId.value.trim();
+    const publishingYear = e.target.publishingYear.value.trim();
+
+    const params = new URLSearchParams();
+    params.append('title', bookTitle);
+    params.append('author_id', authorId);
+    params.append('publisher_id', publisherId);
+    params.append('publishing_year', publishingYear);
+
+
+    fetch(`${BASE_URL}/admin/${user_id}/books`, {
+    method: "POST",
+    body: params,
+    headers: header
+    })
+    .then((response) => response.json())
+});
+
+
 /*
 publishingYearInput.addEventListener("input", function () {
 const min = parseInt(this.min, 10);
