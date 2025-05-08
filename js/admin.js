@@ -14,7 +14,7 @@ const showAuthors = async () => {
     author.forEach(author => {
       const option = document.querySelector('#authorTemplate').content.cloneNode(true);
       option.querySelector('.optionAuthorId').innerText = author.author_name;
-      option.querySelector('.optionAuthorId').value = author.author_name;
+      option.querySelector('.optionAuthorId').value = author.author_id;
       
   
 
@@ -38,7 +38,7 @@ const showPublishers = async () => {
     publisher.forEach(publisher => {
       const option = document.querySelector('#publisherTemplate').content.cloneNode(true);
       option.querySelector('.optionPublisherId').innerText = publisher.publisher_name;
-      option.querySelector('.optionPublisherId').value = publisher.publisher_name;
+      option.querySelector('.optionPublisherId').value = publisher.publisher_id;
   
 
     fragment.append(option);
@@ -72,16 +72,9 @@ document.querySelector('#form_book').addEventListener('submit',(e)=> {
     headers: header
     })
     .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      
 });
 
-
-/*
-publishingYearInput.addEventListener("input", function () {
-const min = parseInt(this.min, 10);
-const value = parseInt(this.value, 10);
-
-if (value < min) {
-    this.value = min;
-}
-});
-*/
+})
