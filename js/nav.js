@@ -1,31 +1,57 @@
+const user_id = sessionStorage.getItem("user_id");
+const adminID = '2679';
+const authLinks = document.getElementById("auth-links");
 
-let user_id = sessionStorage.getItem("user_id");
-let user_token = sessionStorage.getItem("user_token");
-const adminID = '2679'
-
-
-if (user_id !== null) {
-    if (user_id === adminID) {
-        document.querySelector('#user-logged')?.classList.add('hidden');
-        document.querySelector('#not-logged')?.classList.add('hidden');
-        document.querySelector('#admin-logged')?.classList.remove('hidden');
-    } else {
-        document.querySelector('#user-logged')?.classList.remove('hidden');
-        document.querySelector('#admin-logged')?.classList.add('hidden');
-        document.querySelector('#not-logged')?.classList.add('hidden');
-    }
-} else {
-    document.querySelector('#user-logged')?.classList.add('hidden');
-    document.querySelector('#admin-logged')?.classList.add('hidden');
-    document.querySelector('#not-logged')?.classList.remove('hidden');
+if (user_id === adminID) {
+    const li = document.createElement("li");
+    const adminLink = document.createElement("a");
+    adminLink.href = "admin.html";
+    adminLink.textContent = "Admin";
+    li.appendChild(adminLink);
+    authLinks.appendChild(li);
 }
 
-// Logging out implies removing user data from sessionStorage
-    document.querySelectorAll('.btn-logout').forEach(button => {
+if (user_id) {
+    const li = document.createElement("li");
+    const profileLink = document.createElement("a");
+    profileLink.href = "profile.html";
+    profileLink.textContent = "Profile";
+    li.appendChild(profileLink);
+    authLinks.appendChild(li);
+
+    const logoutLi = document.createElement("li");
+    const logoutButton = document.createElement("button");
+    logoutButton.textContent = "Logout";
+    logoutButton.classList.add("btn-logout");
+    logoutLi.appendChild(logoutButton);
+    authLinks.appendChild(logoutLi);
+} else {
+    const signupLi = document.createElement("li");
+    const signupLink = document.createElement("a");
+    signupLink.href = "signup.html";
+    signupLink.textContent = "Sign up";
+    signupLi.appendChild(signupLink);
+    authLinks.appendChild(signupLi);
+
+    const loginLi = document.createElement("li");
+    const loginLink = document.createElement("a");
+    loginLink.href = "login.html";
+    loginLink.textContent = "Log in";
+    loginLi.appendChild(loginLink);
+    authLinks.appendChild(loginLi);
+}
+
+document.querySelectorAll('.btn-logout').forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
         sessionStorage.removeItem('user_id');
         sessionStorage.removeItem('user_token');
         window.location.href = 'index.html';
+    });
+});
+
+document.getElementById("burger-menu").addEventListener("click", function () {
+    document.querySelectorAll(".main-menu, .util-menu").forEach(menu => {
+        menu.classList.toggle("show");
     });
 });
