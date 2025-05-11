@@ -50,6 +50,7 @@ button {
     border-radius: 0.5rem;
     box-shadow: var(--shadows);
     transition: 300ms;
+    cursor: pointer;
 }
 
 button:hover {
