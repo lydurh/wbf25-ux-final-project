@@ -1,5 +1,5 @@
 import { BASE_URL } from "./info.js";
-import { APIerrorResponse, handleError, showMessage} from './handle-errors.js';
+import { handleAPIError, handleError} from './handle-errors.js';
 import { header } from './api.js';
 
 const showProfile = async () => {
@@ -127,10 +127,10 @@ function deleteUser() {
               sessionStorage.removeItem("user_id");
               window.location = "index.html"
           } else {
-            APIerrorResponse(data.error);
+            handleAPIError(data.error);
           }
       })
-      .catch(APIerrorResponse);
+      .catch(handleAPIError);
   }
 };
 
