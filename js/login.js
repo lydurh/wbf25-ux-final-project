@@ -1,5 +1,5 @@
 import { BASE_URL } from './info.js';
-import { APIerrorResponse, handleError } from './handle-errors.js';
+import { handleError } from './handle-errors.js';
 
 document.querySelector('#form-login').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -19,7 +19,6 @@ document.querySelector('#form-login').addEventListener('submit', (e) => {
     )
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if (Object.keys(data).includes('user_id')) {
             sessionStorage.setItem('user_id', data.user_id);
             sessionStorage.setItem('user_token', data.auth_token);

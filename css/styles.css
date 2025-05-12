@@ -318,3 +318,11 @@ input:focus {
         opacity: 1;
     }
 }
+
+
+#messageCon.error {
+    background-color: red;
+    color: black;
+    height: 2rem;
+    width: 6rem;
+}

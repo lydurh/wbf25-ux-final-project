@@ -1,5 +1,5 @@
 import { BASE_URL } from './info.js';
-import { APIerrorResponse, handleError } from './handle-errors.js';
+import { handleAPIError, handleError } from './handle-errors.js';
 
 const validateForm = (formData) => {
   const errors = [];
@@ -55,6 +55,7 @@ const validateForm = (formData) => {
 };
 
 
+
 document.querySelector('#form-signup').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -103,10 +104,15 @@ document.querySelector('#form-signup').addEventListener('submit', (e) => {
         console.log(data.user_id, "- Signup successfull");
         window.location.href = "login.html";
     } else {
-        APIerrorResponse(data.error);
+        handleError(data.error);
     }
   })
-  .catch(APIerrorResponse);
+  .catch(handleAPIError);
 
 
 });
+const validationErrors = validateForm(formData);
+    if (validationErrors.length > 0) {
+        showMessage(validationErrors.join("\n"), "error");
+        return false;
+    }
