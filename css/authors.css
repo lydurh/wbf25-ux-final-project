@@ -9,7 +9,8 @@
 
 
 article.author {
-    background-color: var(--titleColor);
+    background-color: var(--bookCardBg);
+    box-shadow: var(--shadows);
     padding: 1rem 1rem;
     flex: 0 1 calc(50% - 1rem); 
     box-sizing: border-box;
@@ -20,6 +21,8 @@ article.author {
     text-align: center;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    border-radius: 0.5rem;
+
     transition: background-color 0.3s ease, font-size 0.3s ease;
 
 &:hover {
@@ -27,7 +30,9 @@ article.author {
     font-size: 1.2rem;
 }
 a {
-    color: var(--bookCardBg);
+    font-family: var(--headerFont);
+    font-size: 1.4rem;
+    color: var(--bodyTextColor);
     text-decoration: none;
     display: block;
     width: 100%;
