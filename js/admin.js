@@ -5,7 +5,7 @@ const adminID = '2679';
 
 if (user_id != adminID) {
   document.querySelector('section').remove();
-  document.querySelector('h1').innerText = "You're not allowed on this page"
+  window.location.href = "login.html"
 } else {
 
   document.querySelector('#form_publisher').addEventListener('submit', (e) => {
