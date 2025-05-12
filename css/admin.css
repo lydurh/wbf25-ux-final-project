@@ -1,0 +1,61 @@
+main {
+    display: flex;
+    max-width: 100%;
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+    min-height: calc(100vh - 115px);
+    gap: 1rem;
+
+    #admin_content{
+        padding: 2rem 0;
+    }
+
+    main > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+    article {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1rem;
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        gap: 1rem;
+        
+        padding-bottom: 2rem;
+        div {
+            display: flex;
+            gap: 1rem;
+        }
+        #authorId, #publisherId {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--bookCardBg);
+            color: var(--subTextColor);
+            border: none;
+            box-shadow: var(--shadows);
+        }
+    }
+}
+}
+
+@media (min-width: 768px) {
+    main {
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+    article {
+        border: solid 1px;
+        border-radius: 0.5rem;
+        flex: 1 1 calc(33.333% - 1rem); /* 3 columns */
+        max-width: calc(33.333% - 1rem);
+        
+    }
+}
