@@ -32,7 +32,6 @@ const showProfile = async () => {
   document.querySelector('#address').value = data.address;
   document.querySelector('#phoneNumber').value = data.phone_number;
   document.querySelector('#form-profile').append(profile);
-  console.log(data)
 };
 document.addEventListener('DOMContentLoaded', function(){
   const form = document.getElementById("form-profile");
@@ -66,7 +65,7 @@ const editProfile = () => {
     e.preventDefault();
 
     
-    formData = {
+    const formData = {
         
       firstName: e.target.firstName.value.trim(),
       lastName: e.target.lastName.value.trim(),
