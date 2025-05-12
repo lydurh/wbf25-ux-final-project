@@ -14,7 +14,7 @@ const validateForm = (formData) => {
     
 
     // Birth date validation
-    const dateBirth = new Date(formData.date);
+    const dateBirth = new Date(formData.dateBirth);
     const today = new Date();
 
     if (isNaN(dateBirth.getTime())) {
