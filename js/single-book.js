@@ -36,6 +36,9 @@ document.querySelector('#loan-book').addEventListener('click', function(e) {
     const markAsLoaned = this.innerText === 'Loaned';
     let user_id = sessionStorage.getItem("user_id");
     let user_token = sessionStorage.getItem("user_token");
+    let modal = document.querySelector("#loaned-book-modal")
+
+
 
     const params = new URLSearchParams();
     params.append('book_id', BOOK_ID);
@@ -54,13 +57,20 @@ document.querySelector('#loan-book').addEventListener('click', function(e) {
     )
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         this.innerText = markAsLoaned ? 'Loan' : 'Loaned';
         this.classList.toggle("loaned", !markAsLoaned);
         sessionStorage.setItem(`book_${BOOK_ID}_loaned`, !markAsLoaned);
 
     })
-    .catch(handleError);
+      const list = document.querySelector('main');
+      modal.showModal();
+
+      modal.querySelector('.close').addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.close();
+        });
+
+    // .catch(handleError); TODO
 });
 
 

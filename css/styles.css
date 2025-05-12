@@ -326,3 +326,42 @@ input:focus {
     height: 2rem;
     width: 6rem;
 }
+
+/* MODAL */
+
+#loaned-book-modal {
+    width: 80%;
+    max-width: 1024px;
+    height: 30%;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    align-content: center;
+    border: none;
+    box-shadow: var(--shadows);
+
+    #modal-content {
+        
+        header {
+            gap: 1rem;
+            padding: 0;
+
+            h2 {
+                margin-bottom: 0.4rem;
+            }
+        }
+        .close {
+            background-color: white !important;
+            color: black !important;
+            border: none !important;
+            box-shadow: none !important;
+            position: absolute;
+            padding: 0 !important;
+            top: 4%;
+            right: 4%;
+            z-index: 100;
+            font-size: 1.5rem;
+        }
+    }
+}
