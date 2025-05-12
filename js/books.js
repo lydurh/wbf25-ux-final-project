@@ -52,7 +52,6 @@ export const renderBooks = (detailedBooks) => {
   });
 
   const list = document.querySelector('#book-list');
-
   list.append(fragment);
 };
 
@@ -74,13 +73,9 @@ const searchBooks = async (search) => {
   }
 
   try {
-    const response = await fetch(`${BASE_URL}/books?s=${search}&limit=1000`); // Adjust limit if needed
-    if (!response.ok) {
-      console.error('Failed to fetch books:', response.statusText);
-      return;
-    }
+    const response = await fetch(`${BASE_URL}/books?s=${search}`); 
     const data = await response.json();
-    const books = data.books || data.results || data;
+    const books =  data;
     renderBooks(books); 
 
     if (showMoreButton) showMoreButton.style.display = 'none';
@@ -92,23 +87,20 @@ const searchBooks = async (search) => {
 
 const initializeSearch = () => {
   const searchInput = document.querySelector('#search-input');
-  if (!searchInput) {
-    console.error('Search input element not found');
-    return;
-  }
-
   searchInput.addEventListener('input', (event) => {
     const search = event.target.value;
+    const list = document.querySelector('#book-list');
+
+    list.innerHTML = '';  
     searchBooks(search);
   });
 };
 
 
-showRandomBooks();
 initializeSearch();
+showRandomBooks();
 
 
 const showMoreButton = document.querySelector(".show-more-button");
-if (showMoreButton) {
-  showMoreButton.addEventListener('click', showRandomBooks);
-}
+showMoreButton.addEventListener('click', showRandomBooks);
+
