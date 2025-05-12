@@ -1,15 +1,36 @@
 import { BASE_URL } from './info.js';
-import { handleError } from './handle-errors.js';
+import { handleError, showMessage } from './handle-errors.js';
+
+const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
+
+
 
 document.querySelector('#form-login').addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const email = e.target.email.value.trim();
-    const password = e.target.password.value.trim();
+
+    const formData = {
+        email: e.target.email.value.trim(),
+        password: e.target.password.value.trim()
+
+    }
+
+    if (!formData.email || !formData.password) {
+        showMessage("Email and password are required", "error");
+        return false;
+    }
+
+    if (!validateEmail(formData.email)) {
+        showMessage("Please enter a valid email address", "error");
+        return false;
+    }
 
     const params = new URLSearchParams();
-    params.append('email', email);
-    params.append('password', password);
+    params.append('email', formData.email);
+    params.append('password', formData.password);
 
     fetch(`${BASE_URL}/auth/login`,
         {
@@ -29,7 +50,7 @@ document.querySelector('#form-login').addEventListener('submit', (e) => {
                         window.location.href = "profile.html";
                     }
         } else {
-            handleError(data.error);
+            handleError("Incorrect password", "error")
         }
     })
     .catch(handleError);
