@@ -52,7 +52,7 @@ export const renderBooks = (detailedBooks) => {
   });
 
   const list = document.querySelector('#book-list');
-  list.innerHTML = '';  
+
   list.append(fragment);
 };
 
