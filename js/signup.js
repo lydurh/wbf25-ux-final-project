@@ -33,6 +33,13 @@ const validateForm = (formData) => {
     if (formData.address.length < 2) {
         errors.push("Adress must be at least 2 characters long");
     }
+
+    // Phone validation
+    const phoneRegex = /^\+?[\d\s-]{8,}$/;
+    if (!phoneRegex.test(formData.phoneNumber)) {
+        errors.push("Please enter a valid phone number");
+    }
+
     // Password validation
     if (formData.password.length < 8) {
         errors.push("Password must be at least 8 characters long");
@@ -50,11 +57,7 @@ const validateForm = (formData) => {
         errors.push("Password must contain at least one special character");
     }
 
-    // Phone validation
-    const phoneRegex = /^\+?[\d\s-]{8,}$/;
-    if (!phoneRegex.test(formData.phoneNumber)) {
-        errors.push("Please enter a valid phone number");
-    }
+
 
     return errors;
     
@@ -96,13 +99,14 @@ document.querySelector('#form-signup').addEventListener('submit', (e) => {
 
     
     const params = new URLSearchParams();
-    params.append('first_name', firstName);
-    params.append('last_name', lastName);
-    params.append('birth_date', dateBirth);
-    params.append('email', email);
-    params.append('phone_number', phoneNumber);
-    params.append('address', address);
-    params.append('password', password);
+    params.append('first_name', formData.firstName);
+    params.append('last_name', formData.lastName);
+    params.append('email', formData.email);
+    params.append('phone_number', formData.phoneNumber);
+    params.append('address', formData.address);
+    params.append('password', formData.password);
+    params.append('repeat_password', formData.repeatPassword);
+    params.append('birth_date', formData.dateBirth);
 
 
     fetch(`${BASE_URL}/users`, {
