@@ -1,5 +1,5 @@
 import { BASE_URL } from "./info.js";
-import { APIerrorResponse, handleError} from './handle-errors.js';
+import { handleAPIError, handleError} from './handle-errors.js';
 import { header } from './api.js';
 
 const showProfile = async () => {
@@ -65,22 +65,26 @@ const editProfile = () => {
     e.preventDefault();
 
     
-      // Form submission
-      const firstName = e.target.firstName.value.trim();
-      const lastName = e.target.lastName.value.trim();
-      const email = e.target.email.value.trim();
-      const address = e.target.address.value.trim();
-      const phoneNumber = e.target.phoneNumber.value.trim();
-      const dateBirth = e.target.date.value.trim();
+    const formData = {
+        
+      firstName: e.target.firstName.value.trim(),
+      lastName: e.target.lastName.value.trim(),
+      email: e.target.email.value.trim(),
+      address: e.target.address.value.trim(),
+      phoneNumber: e.target.phoneNumber.value.trim(),
+      dateBirth: e.target.date.value.trim()
+    }
 
       
       const params = new URLSearchParams();
-      params.append('email', email);
-      params.append('first_name', firstName);
-      params.append('last_name', lastName);
-      params.append('phone_number', phoneNumber);
-      params.append('address', address);
-      params.append('birth_date', dateBirth);
+      params.append('email',formData.email);
+      params.append('first_name', formData.firstName);
+      params.append('last_name', formData.lastName);
+      params.append('phone_number', formData.phoneNumber);
+      params.append('address', formData.address);
+      params.append('birth_date', formData.dateBirth);
+    
+    
     
     fetch(`${BASE_URL}/users/${user_id}`, {
       method: 'PUT',
@@ -122,10 +126,10 @@ function deleteUser() {
               sessionStorage.removeItem("user_id");
               window.location = "index.html"
           } else {
-            APIerrorResponse(data.error);
+            handleAPIError(data.error);
           }
       })
-      .catch(APIerrorResponse);
+      .catch(handleAPIError);
   }
 };
 

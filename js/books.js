@@ -28,7 +28,7 @@ export const fetchAllDetailedBooks = async (books) => {
 };
 
 
-export const renderBooks = (detailedBooks) => {
+export const renderBooks = (detailedBooks, searchTerm = ' ') => {
   const fragment = document.createDocumentFragment();
 
   detailedBooks.forEach(fullBook => {
@@ -49,8 +49,12 @@ export const renderBooks = (detailedBooks) => {
     });
 
     fragment.append(card);
-  });
+ 
 
+  });
+  document.querySelector('#search-input').addEventListener('input', (event) => {
+    const searchTerm = event.target.value;
+    renderBooks(searchTerm); });
   const list = document.querySelector('#book-list');
   list.append(fragment);
 };
@@ -63,41 +67,44 @@ export const showRandomBooks = async () => {
   renderBooks(detailedBooks);
 };
 
-const searchBooks = async (search) => {
-  const showMoreButton = document.querySelector(".show-more-button");
-
-  if (!search.trim()) {
-    showRandomBooks();
-    if (showMoreButton) showMoreButton.style.display = 'block';
-    return;
-  }
-
-  try {
-    const response = await fetch(`${BASE_URL}/books?s=${search}`); 
-    const data = await response.json();
-    const books =  data;
-    renderBooks(books); 
-
-    if (showMoreButton) showMoreButton.style.display = 'none';
-
-  } catch (error) {
-    console.error('Error searching books:', error);
-  }
-};
-
-const initializeSearch = () => {
-  const searchInput = document.querySelector('#search-input');
-  searchInput.addEventListener('input', (event) => {
-    const search = event.target.value;
-    const list = document.querySelector('#book-list');
-
-    list.innerHTML = '';  
-    searchBooks(search);
-  });
-};
 
 
-initializeSearch();
+
+// const searchBooks = async (search) => {
+//   const showMoreButton = document.querySelector(".show-more-button");
+
+//   if (!search.trim()) {
+//     showRandomBooks();
+//     if (showMoreButton) showMoreButton.style.display = 'block';
+//     return;
+//   }
+
+//   try {
+//     const response = await fetch(`${BASE_URL}/books?s=${search}`); 
+//     const data = await response.json();
+//     const books =  data;
+//     renderBooks(books); 
+
+//     if (showMoreButton) showMoreButton.style.display = 'none';
+
+//   } catch (error) {
+//     console.error('Error searching books:', error);
+//   }
+// };
+
+// const initializeSearch = () => {
+//   const searchInput = document.querySelector('#search-input');
+//   searchInput.addEventListener('input', (event) => {
+//     const search = event.target.value;
+//     const list = document.querySelector('#book-list');
+
+//     list.innerHTML = '';  
+//     searchBooks(search);
+//   });
+// };
+
+
+// initializeSearch();
 showRandomBooks();
 
 
