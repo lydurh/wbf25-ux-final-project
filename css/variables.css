@@ -10,6 +10,8 @@
     --CTAColor: #003AA7;
     --CTAhover: #3F5682;
     --bodyTextColor: #0D0D0E;
+    --errorColor: rgb(255, 88, 88);
+    --successColor: rgb(83, 180, 83);
 
     /* FONTS */
     --headerFont: Georgia, serif;
