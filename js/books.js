@@ -1,6 +1,6 @@
 import { BASE_URL } from "./info.js";
 
-export const fetchBooks = async (num = null, query = '') => {
+ const fetchBooks = async (num = null, query = '') => {
   const url = query ? `${BASE_URL}/books?s=${query}` : num ? `${BASE_URL}/books?n=${num}` : `${BASE_URL}/books`;
   const response = await fetch(url);
   const data = await response.json();
@@ -8,7 +8,7 @@ export const fetchBooks = async (num = null, query = '') => {
 };
 
 
-export const fetchDetailedBook = async (bookId) => {
+ const fetchDetailedBook = async (bookId) => {
   try {
     const response = await fetch(`${BASE_URL}/books/${bookId}`);
     const data = await response.json();
@@ -20,7 +20,7 @@ export const fetchDetailedBook = async (bookId) => {
 };
 
 
-export const fetchAllDetailedBooks = async (books) => {
+ const fetchAllDetailedBooks = async (books) => {
   if (!Array.isArray(books)) {
     return [];
   }
@@ -29,7 +29,7 @@ export const fetchAllDetailedBooks = async (books) => {
   );
 };
 
-export const renderBooks = (detailedBooks, searchTerm = ' ') => {
+ const renderBooks = (detailedBooks, searchTerm = ' ') => {
 
   if (!Array.isArray(detailedBooks)) {
     return;
@@ -69,7 +69,7 @@ export const renderBooks = (detailedBooks, searchTerm = ' ') => {
   list.append(fragment);
 };
 
-export const showRandomBooks = async () => {
+ const showRandomBooks = async () => {
   const NUM_BOOKS = 10;
   try {
     const books = await fetchBooks(NUM_BOOKS);
@@ -81,7 +81,7 @@ export const showRandomBooks = async () => {
 };
 
 
-export const searchBooks = async (searchTerm) => {
+ const searchBooks = async (searchTerm) => {
   const showMoreButton = document.querySelector(".show-more-button");
   const list = document.querySelector('#book-list');
   
