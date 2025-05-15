@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/profile.js" type="module"></script>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/profile.css">
   <script type="module" src="js/nav.js"></script>
   <title>Profile</title>
 </head>
@@ -29,13 +29,15 @@
 
     <ul id="auth-links" class="util-menu"></ul>
   </nav>
-  <main>
+  <main class="profileFormStyling">
+    <section id="show-profile">
     <header>
       <h1 id="profile-header"></h1>
     </header>
-    <section id="show-profile">
+    <header>
       <h2>Edit profile</h2>
-      <p>Member since: <span id="membershipDate"></span></p>
+    </header>
+      <p id="memberSince">Member since: <span id="membershipDate"></span></p>
       <form id="form-profile" type="submit">
         <div>
           <input id="firstName" type="text" value="" disabled>
@@ -50,12 +52,14 @@
           <input id="phoneNumber" type="number" value="" disabled>
         </div>
         <div>
+        <div>
           <button id="updateUserBtn">Edit user</button>
           <button class="hidden" id="saveUserBtn">Save user changes</button>
         </div>
       </form>
       <div>
         <button id="deleteUserBtn">Delete user</button>
+      </div>
       </div>
       <p id="showSuccessMessage"></p>
       <p id="errorText"></p>

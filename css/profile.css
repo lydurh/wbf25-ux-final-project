@@ -1,0 +1,42 @@
+.profileFormStyling {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    min-height: calc(100vh - 115px);
+    gap: 1rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        justify-content: center;
+        gap: 1rem;
+        
+        padding-bottom: 1rem;
+        div {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+}
+
+/*
+#profile-header {
+    padding-bottom: 2rem;
+}
+#showprofile {
+    h2 {
+        padding-bottom: 1rem;
+    }
+}
+*/
+header {
+    padding-bottom: 1rem;
+}
+#memberSince{
+    padding-bottom: 1rem;
+}
+
+#deleteUserBtn {
+    background-color: var(--errorColor);
+}
