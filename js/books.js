@@ -1,6 +1,6 @@
 import { BASE_URL } from "./info.js";
 
- const fetchBooks = async (num = null, query = '') => {
+export const fetchBooks = async (num = null, query = '') => {
   const url = query ? `${BASE_URL}/books?s=${query}` : num ? `${BASE_URL}/books?n=${num}` : `${BASE_URL}/books`;
   const response = await fetch(url);
   const data = await response.json();
@@ -8,20 +8,21 @@ import { BASE_URL } from "./info.js";
 };
 
 
- const fetchDetailedBook = async (bookId) => {
+export const fetchDetailedBook = async (bookId) => {
   try {
     const response = await fetch(`${BASE_URL}/books/${bookId}`);
     const data = await response.json();
     return { ...data, book_id: bookId };
-  } catch  {
-
-    return;
+  } catch (error) {
+    console.error(`Failed to fetch book with ID ${bookId}`, error);
+    return null;
   }
 };
 
 
- const fetchAllDetailedBooks = async (books) => {
+export const fetchAllDetailedBooks = async (books) => {
   if (!Array.isArray(books)) {
+    console.error("Expected books to be an array, got:", books);
     return [];
   }
   return Promise.all(
@@ -29,9 +30,10 @@ import { BASE_URL } from "./info.js";
   );
 };
 
- const renderBooks = (detailedBooks, searchTerm = ' ') => {
+export const renderBooks = (detailedBooks, searchTerm = ' ') => {
 
   if (!Array.isArray(detailedBooks)) {
+    console.error("detailedBooks is not an array:", detailedBooks);
     return;
   }
 
@@ -69,19 +71,20 @@ import { BASE_URL } from "./info.js";
   list.append(fragment);
 };
 
- const showRandomBooks = async () => {
+export const showRandomBooks = async () => {
   const NUM_BOOKS = 10;
   try {
     const books = await fetchBooks(NUM_BOOKS);
     const detailedBooks = await fetchAllDetailedBooks(books);
     renderBooks(detailedBooks);
-  } catch {
-
+  } catch (error) {
+    console.error("Error fetching random books:", error);
   }
 };
 
 
- const searchBooks = async (searchTerm) => {
+
+export const searchBooks = async (searchTerm) => {
   const showMoreButton = document.querySelector(".show-more-button");
   const list = document.querySelector('#book-list');
   
@@ -96,10 +99,10 @@ import { BASE_URL } from "./info.js";
   }
 
   try {
-
+    console.log(`Searching for: "${searchTerm}"`);
 
     const books = await fetchBooks(null, searchTerm);
-
+    console.log("Search results:", books);
 
     if (!books || books.length === 0) {
 
@@ -110,37 +113,48 @@ import { BASE_URL } from "./info.js";
 
 
     const detailedBooks = await fetchAllDetailedBooks(books);
-
+    console.log("Detailed search results:", detailedBooks);
     
 
     renderBooks(detailedBooks);
     
 
     if (showMoreButton) showMoreButton.style.display = 'none';
-  } catch  {
-
+  } catch (error) {
+    console.error('Error searching books:', error);
+    list.innerHTML = '<p>An error occurred while searching. Please try again.</p>';
   }
 };
 
 const initializeSearch = () => {
   const searchInput = document.querySelector('#search-input');
   if (!searchInput) {
+    console.error("Search input element not found");
     return;
   }
 
     searchInput.value = '';
 
 
+
+  let debounceTimer;
   searchInput.addEventListener('input', (event) => {
-  const searchTerm = event.target.value;
-  searchBooks(searchTerm);
-});
+
+    clearTimeout(debounceTimer);
+    
+
+    debounceTimer = setTimeout(() => {
+      const searchTerm = event.target.value;
+      searchBooks(searchTerm);
+    }, 300); // Wait 300ms after typing stops
+  });
   
+  console.log("Search initialized");
 };
 
 
 const initializeApp = () => {
-
+  console.log("Initializing app");
   
 
   initializeSearch();
@@ -149,12 +163,15 @@ const initializeApp = () => {
   const showMoreButton = document.querySelector(".show-more-button");
   if (showMoreButton) {
     showMoreButton.addEventListener('click', showRandomBooks);
-
-  } 
+    console.log("Show more button initialized");
+  } else {
+    console.warn("Show more button not found");
+  }
   
 
   showRandomBooks();
 };
+
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeApp);
@@ -162,3 +179,8 @@ if (document.readyState === 'loading') {
 
   initializeApp();
 }
+
+
+
+
+
