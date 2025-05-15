@@ -319,12 +319,24 @@ input:focus {
     }
 }
 
+.inputError {
+    outline: 1px solid var(--errorColor);
+}
+
+#messageCon {
+
+    font-family: var(--bodyFont);
+    color: white;
+    background: var(--errorColor);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    width: fill;
+
+}
 
 #messageCon.error {
-    background-color: red;
-    color: black;
-    height: 2rem;
-    width: 6rem;
+    background: var(--errorColor);
+
 }
 
 /* MODAL */
@@ -342,7 +354,7 @@ input:focus {
     box-shadow: var(--shadows);
 
     #modal-content {
-        
+
         header {
             gap: 1rem;
             padding: 0;
@@ -351,6 +363,7 @@ input:focus {
                 margin-bottom: 0.4rem;
             }
         }
+
         .close {
             background-color: white !important;
             color: black !important;
