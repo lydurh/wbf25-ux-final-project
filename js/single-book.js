@@ -39,6 +39,7 @@ const showBook = async () => {
 showBook();
 
 // Loan book func
+
 document.querySelector('#loan-book').addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -53,6 +54,7 @@ document.querySelector('#loan-book').addEventListener('click', function (e) {
   params.append('book_id', BOOK_ID);
 
   //Fetching the book id when you're a user, so you need to be logged in
+  if (user_id){
   fetch(`${BASE_URL}/users/${user_id}/books/${BOOK_ID}`,
     {
       method: markAsLoaned ? 'POST' : 'DELETE',
@@ -71,6 +73,7 @@ document.querySelector('#loan-book').addEventListener('click', function (e) {
       sessionStorage.setItem(`book_${BOOK_ID}_loaned`, !markAsLoaned);
 
     })
+  
   const list = document.querySelector('main');
   modal.showModal();
 
@@ -78,7 +81,10 @@ document.querySelector('#loan-book').addEventListener('click', function (e) {
     e.preventDefault();
     modal.close();
   });
-
+  }
+  else {
+    window.location.href = "login.html"
+  }
   // .catch(handleError); TODO
 });
 
