@@ -1,7 +1,7 @@
 #author-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
     font-family: var(--headerFont);
 }
@@ -46,30 +46,19 @@ a:hover{
         color: var(--mainBg);
 }
 }
-#showMoreAuthors {
-    background-color: var(--titleColor);
-    color: var(--bookCardBg);
-    border-radius: 0.5rem;
-    border: none;
-    margin-bottom: 0.7rem;
-    padding: 1rem 3rem;
-    font-size: 1.5rem;
-    &:hover {
-        background-color: var(--subTextColor);
-    }
-}
+
 /* bigger screen*/
 @media (min-width: 768px) {
     #author-list{
-        justify-content: space-between !important;
+        /* justify-content: space-between !important; */
         article.author {
             flex: 0 1 calc(25% - 1rem); 
         }
     }
 }
 
-/* bigger screen*/
-/* @media (min-width: 1400px) {
+ /* bigger screen 
+@media (min-width: 1400px) {
     article.author {
         flex: 0 1 calc(20% - 1rem);
     }
