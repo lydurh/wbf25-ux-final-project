@@ -8,8 +8,11 @@ import { header } from './api.js';
   if (user_id != adminID && !user_id) {
   document.querySelector('section').remove();
   window.location.href = "login.html"
+  } else if (user_id === adminID) {
+  
+    document.querySelector('section').remove();
+    window.location.href = "admin.html"
   } else {
-    
 
   const showProfile = async () => {
     let user_id = sessionStorage.getItem("user_id");
