@@ -194,3 +194,7 @@ section#loan-history-section {
     background-color: var(--subTextColor);
     pointer-events: none;
 }
+
+.bookName{
+    font-weight: bold;
+}

@@ -22,6 +22,7 @@ const showBook = async () => {
     document.querySelector('#breadcrumb_author').innerText = data.author;
     document.querySelector('#breadcrumb_book').innerText = data.title;
     document.querySelector('h2').innerText = data.title;
+    document.querySelector('.bookName').innerText = data.title;
     document.querySelector('.author').innerText = data.author;
     document.querySelector('.year').innerText = data.publishing_year;
     document.querySelector('.publisher').innerText = data.publishing_company;
