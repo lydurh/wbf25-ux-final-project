@@ -38,6 +38,7 @@ import { header } from './api.js';
     const data = await response.json();
     const profile = document.createDocumentFragment();
     console.log(data);
+    document.querySelector('#profile-header').innerText = `Hi ${data.first_name}`;
     document.querySelector('#membershipDate').innerText = data.membership_date;
     document.querySelector('#firstName').value = data.first_name;
     document.querySelector('#lastName').value = data.last_name;
