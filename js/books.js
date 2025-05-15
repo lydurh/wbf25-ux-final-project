@@ -14,7 +14,6 @@ export const fetchDetailedBook = async (bookId) => {
     const data = await response.json();
     return { ...data, book_id: bookId };
   } catch (error) {
-    console.error(`Failed to fetch book with ID ${bookId}`, error);
     return null;
   }
 };
@@ -22,7 +21,6 @@ export const fetchDetailedBook = async (bookId) => {
 
 export const fetchAllDetailedBooks = async (books) => {
   if (!Array.isArray(books)) {
-    console.error("Expected books to be an array, got:", books);
     return [];
   }
   return Promise.all(
@@ -33,7 +31,6 @@ export const fetchAllDetailedBooks = async (books) => {
 export const renderBooks = (detailedBooks, searchTerm = ' ') => {
 
   if (!Array.isArray(detailedBooks)) {
-    console.error("detailedBooks is not an array:", detailedBooks);
     return;
   }
 
@@ -44,7 +41,6 @@ export const renderBooks = (detailedBooks, searchTerm = ' ') => {
 
     const template = document.querySelector('.book-card');
     if (!template) {
-      console.error("Book card template not found");
       return;
     }
 
@@ -78,7 +74,6 @@ export const showRandomBooks = async () => {
     const detailedBooks = await fetchAllDetailedBooks(books);
     renderBooks(detailedBooks);
   } catch (error) {
-    console.error("Error fetching random books:", error);
   }
 };
 
@@ -99,10 +94,8 @@ export const searchBooks = async (searchTerm) => {
   }
 
   try {
-    console.log(`Searching for: "${searchTerm}"`);
 
     const books = await fetchBooks(null, searchTerm);
-    console.log("Search results:", books);
 
     if (!books || books.length === 0) {
 
@@ -113,7 +106,6 @@ export const searchBooks = async (searchTerm) => {
 
 
     const detailedBooks = await fetchAllDetailedBooks(books);
-    console.log("Detailed search results:", detailedBooks);
     
 
     renderBooks(detailedBooks);
@@ -121,7 +113,6 @@ export const searchBooks = async (searchTerm) => {
 
     if (showMoreButton) showMoreButton.style.display = 'none';
   } catch (error) {
-    console.error('Error searching books:', error);
     list.innerHTML = '<p>An error occurred while searching. Please try again.</p>';
   }
 };
@@ -129,50 +120,32 @@ export const searchBooks = async (searchTerm) => {
 const initializeSearch = () => {
   const searchInput = document.querySelector('#search-input');
   if (!searchInput) {
-    console.error("Search input element not found");
     return;
   }
 
-    searchInput.value = '';
-
-
-
+  searchInput.value = '';
   let debounceTimer;
   searchInput.addEventListener('input', (event) => {
 
     clearTimeout(debounceTimer);
-    
-
     debounceTimer = setTimeout(() => {
       const searchTerm = event.target.value;
       searchBooks(searchTerm);
     }, 300); // Wait 300ms after typing stops
   });
   
-  console.log("Search initialized");
 };
 
-
 const initializeApp = () => {
-  console.log("Initializing app");
   
-
   initializeSearch();
-  
-
   const showMoreButton = document.querySelector(".show-more-button");
   if (showMoreButton) {
     showMoreButton.addEventListener('click', showRandomBooks);
-    console.log("Show more button initialized");
   } else {
-    console.warn("Show more button not found");
   }
-  
-
   showRandomBooks();
 };
-
-
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
