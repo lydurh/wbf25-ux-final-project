@@ -4,7 +4,7 @@ main {
     flex-direction: column;
     margin: auto;
     padding: 1rem;
-    min-height: calc(100vh - 115px);
+    min-height: calc(100vh - 113px);
     gap: 1rem;
 
     #admin_content{
