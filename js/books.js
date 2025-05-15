@@ -30,7 +30,7 @@ export const fetchAllDetailedBooks = async (books) => {
   );
 };
 
-export const renderBooks = (detailedBooks, searchTerm = ' ') => {
+export const renderBooks = async (detailedBooks, searchTerm = ' ') => {
   if (!Array.isArray(detailedBooks)) return;
 
   const fragment = document.createDocumentFragment();
@@ -48,8 +48,13 @@ export const renderBooks = (detailedBooks, searchTerm = ' ') => {
     card.querySelector('.author').innerText = fullBook.author;
     card.querySelector('.year').innerText = fullBook.publishing_year;
     card.querySelector('.publisher').innerText = fullBook.publishing_company;
-    card.querySelector('img').src = fullBook.cover || 'img/bookcover.webp';
-    card.querySelector('img').alt = fullBook.title;
+    // card.querySelector('img').src = fullBook.cover || 'img/bookcover.webp';
+    // card.querySelector('img').alt = fullBook.title;
+
+    card.querySelectorAll('img').forEach(image => {
+      image.src = fullBook.cover || 'img/bookcover.webp';
+      image.alt = fullBook.title;
+    })
 
     card.querySelectorAll('a').forEach(link => {
       link.href = `single-book.html?id=${fullBook.book_id}`;

@@ -1,6 +1,6 @@
 @import 'variables.css';
-@import 'authors.css';
-@import 'singlebook.css';
+/* @import 'authors.css'; */
+/* @import 'singlebook.css'; */
 
 
 * {
@@ -20,7 +20,7 @@ body {
 }
 
 main {
-    min-height: calc(100vh - 115px);
+    min-height: calc(100vh - 7rem);
 }
 
 h1 {
@@ -33,6 +33,7 @@ h3,
 h4 {
     font-family: var(--headerFont);
     color: var(--titleColor);
+    font-weight: bolder;
 }
 
 p,
@@ -88,8 +89,8 @@ nav {
         }
 
         img {
-            height: 50px;
-            width: 50px;
+            height: auto;
+            max-width: 50px;
         }
     }
 
