@@ -18,11 +18,30 @@
         gap: 1rem;
         
         padding-bottom: 2rem;
-        div {
-            display: flex;
-            gap: 1rem;
-        }
     }
+            .groupInput {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+
+            label {
+                font-family: var(--bodyFont);
+                font-weight: 400;
+                padding-bottom: 0.2rem;
+            }
+            
+        }
+    
+}
+        .inputContainer {
+            display: flex;
+            gap: 1rem; 
+}
+.inputContainer > div {
+  flex: 1; /* both inputs take equal width */
+  display: flex;
+  flex-direction: column; /* label on top of input */
+  align-items: flex-start; /* left align labels */
 }
 
 /* Removes the arrows on number input field*/

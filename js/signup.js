@@ -1,12 +1,15 @@
 import { BASE_URL } from './info.js';
 import { handleAPIError, handleError, showMessage } from './handle-errors.js';
 
+// Function to validate form data
+// Takes an object (formData) containing all form inputs and performs validation checks
+// Returns an array of error messages if there are any errors
 const validateForm = (formData) => {
     const errors = [];
 
     // Name validation
     if (formData.firstName.length < 2) {
-        errors.push("First name must be at least 2 characters long");
+        errors.push("First name must be at least 2 characters");
         firstName.classList.add("inputError");
 
     }
@@ -15,7 +18,7 @@ const validateForm = (formData) => {
     }
 
     if (formData.lastName.length < 2) {
-        errors.push("Last name must be at least 2 characters long");
+        errors.push("Last name must be at least 2 characters");
         lastName.classList.add("inputError");
     }
     else {
@@ -48,7 +51,7 @@ const validateForm = (formData) => {
 
     // Home Adress validation
     if (formData.address.length < 2) {
-        errors.push("Adress must be at least 2 characters long");
+        errors.push("Address must be at least 2 characters");
         address.classList.add("inputError");
     } else {
         address.classList.remove("inputError");
@@ -65,7 +68,7 @@ const validateForm = (formData) => {
 
     // Password validation
     if (formData.password.length < 8) {
-        errors.push("Password must be at least 8 characters long");
+        errors.push("Password must be at least 8 characters");
         password.classList.add("inputError");
     }
     else if (!/[a-z]/.test(formData.password)) {
@@ -87,7 +90,7 @@ const validateForm = (formData) => {
         password.classList.remove("inputError");
     }
 
-    // Repeat Password validation
+    // Repeat Password validation - check if passwords match
     if (formData.password !== formData.repeatPassword) {
         errors.push("Passwords do not match");
         repeatPassword.classList.add("inputError");
@@ -101,12 +104,14 @@ const validateForm = (formData) => {
 };
 
 
-
+// Event listener for form submission
+// Prevents the default submit action and triggers the form validation
+// If validation passes, it sends a POST request to the server
 
 document.querySelector('#form-signup').addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Form submission
+    // Collects the values from the input fields in the form
     const formData = {
 
         firstName: e.target.firstName.value.trim(),
@@ -118,8 +123,9 @@ document.querySelector('#form-signup').addEventListener('submit', (e) => {
         password: e.target.password.value.trim(),
         repeatPassword: e.target.repeatPassword.value.trim()
     }
-
+    // Validate the form data
     const validationErrors = validateForm(formData);
+    // If errors exist, show the first error and prevent submission
     if (validationErrors.length > 0) {
         showMessage(validationErrors[0], "error");
         return false;
@@ -137,17 +143,19 @@ document.querySelector('#form-signup').addEventListener('submit', (e) => {
     params.append('repeat_password', formData.repeatPassword);
     params.append('birth_date', formData.dateBirth);
 
-
+    // Send a POST request to the server with the form data
     fetch(`${BASE_URL}/users`, {
         method: "POST",
         body: params,
     })
         .then((response) => response.json())
         .then((data) => {
+            // If the response contains user_id, redirect to login page
             if (Object.keys(data).includes("user_id")) {
                 console.log(data.user_id, "- Signup successfull");
                 window.location.href = "login.html";
             } else {
+                // If error occurs, display the error message
                 handleError(data.error);
             }
         })
