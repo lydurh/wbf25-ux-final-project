@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover your next favorite read at Bookstone – the ultimate destination for bestsellers, book reviews, and literary treasures.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/forms.css">
   <script src="js/signup.js" type="module"></script>
@@ -37,17 +38,41 @@
   </header>
     <span id="messageCon" class="hidden"></span>
     <form id="form-signup" action="">
-      <div>
+      <div class="inputContainer">
+        <div class="groupInput">
+          <label for="firstName">First name</label>
         <input id="firstName" type="text" placeholder="First name">
+        </div>
+        <div class="groupInput">
+          <label for="lastName">Last name</label>
         <input id="lastName" type="text" placeholder="Last name">
+        </div>
       </div>
+      <div class="groupInput">
+        <label for="date">Date of birth</label>
       <input id="date" type="date" placeholder="Date of birth">
-      <input id="email" type="email" placeholder="Email">
+      </div>
+      <div class="groupInput">
+        <label for="email">E-mail</label>
+      <input id="email" type="email" placeholder="E-mail">
+      </div>
+      <div class="groupInput">
+        <label for="address">Address</label>
       <input id="address" type="text" placeholder="Address">
+      </div>
+      <div class="groupInput">
+        <label for="phoneNumber">Phone number</label>
       <input id="phoneNumber" type="number" placeholder="Phone number">
+      </div>
+      <div class="groupInput">
+        <label for="password">Password</label>
       <input id="password" type="password" placeholder="Password">
+      </div>
+      <div class="groupInput">
+        <label for="repeatPassword">Repeat password</label>
       <input id="repeatPassword" type="password" placeholder="Repeat Password">
-      <button type="submit">Sign up</button>
+      </div>
+      <button type="submit" aria-label="Sign up button">Sign up</button>
     </form>
   </main>
   <footer>
