@@ -13,15 +13,16 @@ body {
     background-color: var(--mainBg);
 
     main {
+        font-family: var(--bodyFont);
         max-width: 1024px;
         margin: auto;
         padding-top: 82px;
+        min-height: calc(100vh - 115px);
+        padding: 1rem;
     }
 }
 
-main {
-    min-height: calc(100vh - 113px);
-}
+
 
 h1 {
     padding-top: 1rem;
@@ -33,13 +34,18 @@ h3,
 h4 {
     font-family: var(--headerFont);
     color: var(--titleColor);
-    font-weight: bolder;
+    font-weight: 700;
 }
 
 p,
-a {
+a,
+ul,
+li {
     font-family: var(--bodyFont);
-    font-size: var(--fontSizeP);
+    color: var(--titleColor);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    font-variation-settings: "wdth" 100;
 }
 
 button {
