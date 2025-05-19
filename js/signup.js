@@ -152,7 +152,6 @@ document.querySelector('#form-signup').addEventListener('submit', (e) => {
         .then((data) => {
             // If the response contains user_id, redirect to login page
             if (Object.keys(data).includes("user_id")) {
-                console.log(data.user_id, "- Signup successfull");
                 window.location.href = "login.html";
             } else {
                 // If error occurs, display the error message
