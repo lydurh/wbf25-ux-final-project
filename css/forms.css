@@ -59,4 +59,5 @@ input::-webkit-inner-spin-button {
 *:disabled{
     background-color: var(--bookCardBg);
     opacity: 0.8;
+    cursor: no-drop;
 }
