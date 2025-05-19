@@ -11,7 +11,6 @@ const validateForm = (formData) => {
     if (formData.firstName.length < 2) {
         errors.push("First name must be at least 2 characters");
         firstName.classList.add("inputError");
-
     }
     else {
         firstName.classList.remove("inputError");

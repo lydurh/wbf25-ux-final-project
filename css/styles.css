@@ -365,6 +365,7 @@ input:focus {
 }
 
 #messageCon {
+    text-align: center;
 
     font-family: var(--bodyFont);
     color: var(--bookCardBg);
@@ -384,6 +385,9 @@ input:focus {
     color: var(--errorColor);
 }
 
+#messageCon.success{
+    background-color: var(--successColor);
+}
 /* MODAL */
 
 dialog {
