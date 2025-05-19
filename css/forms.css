@@ -1,14 +1,20 @@
+
 .formStyling {
     display: flex;
     flex-direction: column;
-    text-align: center;
+
     margin: auto;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 113px);
     gap: 1rem;
     padding-inline: 1rem;
-
+    header{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 500px;
+    }
     form {
         display: flex;
         flex-direction: column;
@@ -16,7 +22,6 @@
         max-width: 500px;
         justify-content: center;
         gap: 1rem;
-        
         padding-bottom: 2rem;
     }
             .groupInput {
@@ -38,10 +43,10 @@
             gap: 1rem; 
 }
 .inputContainer > div {
-  flex: 1; /* both inputs take equal width */
-  display: flex;
-  flex-direction: column; /* label on top of input */
-  align-items: flex-start; /* left align labels */
+    flex: 1; /* both inputs take equal width */
+    display: flex;
+    flex-direction: column; /* label on top of input */
+    align-items: flex-start; /* left align labels */
 }
 
 /* Removes the arrows on number input field*/
