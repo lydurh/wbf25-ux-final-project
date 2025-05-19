@@ -4,13 +4,13 @@
 
 
 * {
+    overscroll-behavior-y: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    overscroll-behavior-y: none;
     background-color: var(--mainBg);
 
     main {
