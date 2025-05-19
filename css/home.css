@@ -26,7 +26,7 @@ section#landingPage {
         font-size: 1rem;
         max-width: 42ch;
     }
-    }
+}
 
         .CTA {
         background-color: var(--CTAColor);
@@ -78,7 +78,7 @@ section#landingPage {
         
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         align-items: flex-start;
         text-align: left;
         height: 300px;
