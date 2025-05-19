@@ -77,7 +77,18 @@ nav {
     flex-wrap: wrap;
     text-align: right;
 
+    #auth-links {
+        width: 203px;
+
+        ul {
+            
+            align-items: flex-end !important;
+        }
+    }
+
     .logo {
+        height: 50px;
+        width: auto;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -95,8 +106,9 @@ nav {
         }
 
         img {
-            height: auto;
-            max-width: 50px;
+            height: 50px;
+            width: 50px;
+ 
         }
     }
 
@@ -118,7 +130,7 @@ nav {
     ul {
         display: flex;
         gap: 1rem;
-        align-items: center;
+        justify-content: flex-end;
 
         &.show {
             display: flex !important;
@@ -206,6 +218,7 @@ nav {
 }
 
 footer {
+    min-height: 120px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -218,7 +231,8 @@ footer {
     gap: 1rem;
 
     .logo {
-
+         height: 50px;
+        width: 50px;
 
         a {
             display: flex;
@@ -336,13 +350,17 @@ input:focus {
     background: var(--errorColor);
     padding: 0.5rem 1rem;
     border-radius: 1rem;
-    width: fill;
 
 }
 
 #messageCon.error {
     background: var(--errorColor);
 
+}
+
+#messageCon.error-text {
+    background-color: none;
+    color: var(--errorColor);
 }
 
 /* MODAL */

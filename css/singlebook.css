@@ -22,13 +22,16 @@ main {
 
     .img-con {
         width: 100%;
-        height: 300px;
+        height: 100%;
+        padding: 1rem;
+        
 
         img {
+
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 0;
+            border-radius: 0.5rem;
         }
     }
 
@@ -37,6 +40,10 @@ main {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        #messageCon {
+            text-align: center;
+        }
     }
 
 
@@ -122,7 +129,7 @@ section#loan-history-section {
     }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 460px) {
     #book {
         .singlebook {
             display: flex;
@@ -138,7 +145,7 @@ section#loan-history-section {
                 img {
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
+                    object-fit: fill;
                     border-radius: 0.5rem 0 0 0.5rem;
                 }
             }
