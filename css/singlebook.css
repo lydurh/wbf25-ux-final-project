@@ -135,7 +135,6 @@ section#loan-history-section {
             display: flex;
             flex-direction: row;
             gap: 1rem;
-            padding: 1rem;
 
             .img-con {
                 width: 200px;
