@@ -23,20 +23,35 @@ body {
     }
 }
 
-
-
-h1 {
-    padding-top: 1rem;
-}
-
 h1,
-h2,
-h3,
-h4 {
+h2 {
     font-family: var(--headerFont);
     color: var(--titleColor);
     font-weight: 700;
 }
+
+h1 {
+    padding-top: 1rem;
+    font-size: var(--h1FontSizeMobile);
+    
+}
+
+h2 {
+    font-size: var(--h2FontSizeMobile);
+}
+
+/*heading font sizes on desktop*/
+@media (min-width: 601px) {
+h1 {
+    font-size: var(--h1FontSizeDekstop);
+    
+}
+
+h2 {
+    font-size: var(--h2FontSizeDekstop);
+}
+}
+
 
 p,
 a,

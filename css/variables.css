@@ -14,10 +14,13 @@
     --successColor: #087000;
 
     /* FONTS */
-
     --headerFont: Georgia, serif;
     --bodyFont: 'Open Sans', Arial, sans serif;
 
+    --h1FontSizeDekstop: 1.7rem;
+    --h2FontSizeDekstop: 1rem;
+    --h1FontSizeMobile: 1.3rem;
+    --h2FontSizeMobile: 0.7rem;
     --fontSizeTitleCard: 1.3rem;
     --fontSizeP: 0.8rem;
     --fontSizeMobileTitleCard: 1rem;
