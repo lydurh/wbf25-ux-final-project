@@ -68,7 +68,7 @@ section#landingPage {
         object-fit: cover;
       }
     
-    @media (min-width: 601px) {
+    @media (min-width: 800px) {
         section#landingPage {
         flex-direction: row;
         align-items: flex-start; 
