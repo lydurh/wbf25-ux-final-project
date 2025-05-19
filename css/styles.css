@@ -168,6 +168,7 @@ nav {
             }
 
             button {
+                border: none;
                 background: none;
                 color: var(--titleColor);
                 box-shadow: none;
