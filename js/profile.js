@@ -122,35 +122,57 @@ import { header } from './api.js';
     })
   };
   editProfile();
+  
+// Delete button Modal
+document.querySelector('#deleteOpenModal').addEventListener('click', function (e) {
+  e.preventDefault();
+  let modal = document.querySelector("#deleteUserModal");
+  modal.showModal();
 
+  modal.querySelector('.close').addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.close();
+  });
 
-  function deleteUser() {
-    let user_id = sessionStorage.getItem("user_id");
+  modal.querySelector('.closeModal').addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.close();
+  });
 
-    console.log(`delete user with id ${user_id}`);
-    if (!user_id) {
-        alert("User ID not found. Please log in again.");
-        return;
-    };
-    if (confirm("Are you sure you want to delete your account?")) {
-        fetch(`${BASE_URL}/users/${user_id}`, {
-        method: "DELETE",
-        headers: header
+  // Delete user when clicking the delete button in the modal
+  modal.querySelector('#deleteUserBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteUser();
+  });
+});
 
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.status === "ok") {
-                alert("User deleted");
-                sessionStorage.removeItem("user_id");
-                window.location = "index.html"
-            } else {
-              handleAPIError(data.error);
-            }
-        })
-        .catch(handleAPIError);
+// Delete User function
+function deleteUser() {
+  let user_id = sessionStorage.getItem("user_id");
+
+  console.log(`delete user with id ${user_id}`);
+  if (!user_id) {
+    alert("User ID not found. Please log in again.");
+    return;
+  }
+
+  // Confirm deletion with the modal
+  fetch(`${BASE_URL}/users/${user_id}`, {
+    method: "DELETE",
+    headers: header
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.status === "ok") {
+      alert("User deleted");
+      sessionStorage.removeItem("user_id");
+      window.location = "login.html";
+    } else {
+      handleAPIError(data.error);
     }
-  };
+  })
+  .catch(handleAPIError);
+}
 
   document.querySelector("#deleteUserBtn").addEventListener("click", deleteUser);
 }

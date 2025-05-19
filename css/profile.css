@@ -27,8 +27,20 @@ header {
 }
 #memberSince{
     padding-bottom: 1rem;
+    font-weight: bold;
+}
+#membershipDate{
+    font-weight: 400;
 }
 
 #deleteUserBtn {
     background-color: var(--errorColor);
+}
+.buttonCon{
+    display: flex;
+    gap: 1rem;
+}
+button{
+    width: 100%;
+    max-width: 150px;
 }

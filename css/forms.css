@@ -31,22 +31,23 @@
 
             label {
                 font-family: var(--bodyFont);
-                font-weight: 400;
+                font-weight: 500;
                 padding-bottom: 0.2rem;
             }
             
         }
     
 }
-        .inputContainer {
-            display: flex;
-            gap: 1rem; 
+.inputContainer {
+        display: flex;
+        gap: 1rem; 
 }
 .inputContainer > div {
-    flex: 1; /* both inputs take equal width */
+    flex: 1; 
     display: flex;
-    flex-direction: column; /* label on top of input */
-    align-items: flex-start; /* left align labels */
+    flex-direction: column; 
+    align-items: flex-start;
+    font-weight: 500; 
 }
 
 /* Removes the arrows on number input field*/
@@ -54,4 +55,8 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+*:disabled{
+    background-color: var(--bookCardBg);
+    opacity: 0.8;
 }
