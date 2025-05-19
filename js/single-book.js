@@ -1,5 +1,5 @@
 import { BASE_URL } from './info.js';
-import { handleError } from './handle-errors.js'
+import { handleError, showMessage } from './handle-errors.js'
 
 let BOOK_ID = new URLSearchParams(window.location.search);
 BOOK_ID = BOOK_ID.get('id');
@@ -54,6 +54,11 @@ document.querySelector('#loan-book').addEventListener('click', function (e) {
   const params = new URLSearchParams();
   params.append('book_id', BOOK_ID);
 
+  if (!user_id) {
+      showMessage("You must be logged in to loan a book.", "error");
+
+  }
+
   //Fetching the book id when you're a user, so you need to be logged in
   if (user_id){
   fetch(`${BASE_URL}/users/${user_id}/books/${BOOK_ID}`,
@@ -83,10 +88,6 @@ document.querySelector('#loan-book').addEventListener('click', function (e) {
     modal.close();
   });
   }
-  else {
-    window.location.href = "login.html"
-  }
-  // .catch(handleError); TODO
 });
 
 

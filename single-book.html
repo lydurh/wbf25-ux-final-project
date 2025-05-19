@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/singlebook.css">
   <title>Single book</title>
   <script src="js/single-book.js" type="module"></script>
@@ -31,6 +30,7 @@
   </nav>
 
   <main>
+
     <section id="book">
       <div class="breadcrumb-container">
         <ul class="breadcrumb">
@@ -51,6 +51,7 @@
             <p>Published by: <span class="publisher"></span></p>
           </div>
           <div>
+            <span id="messageCon" class="hidden"></span>
             <button type="submit" id="loan-book" class="link">Loan</button>
           </div>
         </div>
@@ -61,7 +62,6 @@
         <thead>
           <h2>Loan history</h2>
           <tr>
-            <!-- <th>Username</th> -->
             <th>Date</th>
           </tr>
         </thead>
@@ -83,7 +83,6 @@
   <template id="loan-history">
     <tbody class="loanHistoryBody">
       <tr>
-        <!-- <td class="username">Obi wan</td> -->
         <td class="loan-date">may 1st 2025</td>
       </tr>
     </tbody>
