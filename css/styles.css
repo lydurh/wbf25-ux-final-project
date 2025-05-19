@@ -10,6 +10,7 @@
 }
 
 body {
+    overscroll-behavior-y: none;
     background-color: var(--mainBg);
 
     main {
@@ -220,7 +221,7 @@ nav {
 }
 
 footer {
-    min-height: 120px;
+    min-height: 100px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -233,8 +234,7 @@ footer {
     gap: 1rem;
 
     .logo {
-        height: 50px;
-        width: 50px;
+        
 
         a {
             display: flex;
@@ -272,7 +272,7 @@ footer {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        width: 100%;
+        min-width: 203px;
         text-align: center;
         font-family: var(--bodyFont);
 
@@ -295,7 +295,7 @@ footer {
         flex-direction: row !important;
 
         p {
-            text-align: right !important;
+            text-align: center !important;
             order: 0;
         }
 
