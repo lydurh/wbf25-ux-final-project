@@ -195,7 +195,7 @@ nav {
         li {
             display: inline;
             font-size: initial;
-            /* or whatever base size you'd prefer */
+            
         }
 
         li:last-of-type {
@@ -350,7 +350,7 @@ input:focus {
 #messageCon {
 
     font-family: var(--bodyFont);
-    color: white;
+    color: var(--bookCardBg);
     background: var(--errorColor);
     padding: 0.5rem 1rem;
     border-radius: 1rem;
@@ -393,8 +393,8 @@ input:focus {
         }
 
         .close {
-            background-color: white !important;
-            color: black !important;
+            background-color: var(--bookCardBg) !important;
+            color: var(--bodyTextColor) !important;
             border: none !important;
             box-shadow: none !important;
             position: absolute;
