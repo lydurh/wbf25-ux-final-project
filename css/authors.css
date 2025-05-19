@@ -36,6 +36,7 @@ article.author {
     }
 
     a {
+
         font-family: var(--headerFont);
         font-size: 1.4rem;
         color: var(--bodyTextColor);
@@ -52,5 +53,10 @@ article.author {
 
     a:hover {
         color: var(--mainBg);
+    }
+    a:focus {
+        border-style: solid;
+        border-radius: 0.5rem;
+        border-color: var(--CTAhover);
     }
 }
