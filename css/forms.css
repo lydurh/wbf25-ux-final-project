@@ -1,4 +1,4 @@
-
+@import 'styles.css';
 .formStyling {
     display: flex;
     flex-direction: column;

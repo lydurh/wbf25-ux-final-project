@@ -1,3 +1,6 @@
+@import 'forms.css';
+@import 'styles.css';
+
 main {
     display: flex;
     max-width: 100%;
