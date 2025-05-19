@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover your next favorite read at Bookstone – the ultimate destination for bestsellers, book reviews, and literary treasures.">
   <title>Admin</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/forms.css">
@@ -43,10 +44,22 @@
           <h2>Add a book</h2>
         </header>
         <form id="form_book">
+        <div class="groupInput">
+        <label for="bookTitle">Book title</label>
           <input id="bookTitle" type="text" placeholder="Book title">
+        </div>
+        <div class="groupInput">
+        <label for="authorId">Choose author</label>
           <select id="authorId"></select>
+        </div>
+        <div class="groupInput">
+        <label for="publisherId">Choose publisher</label>
           <select id="publisherId"></select>
+        </div>
+        <div class="groupInput">
+        <label for="publishingYear">Publishing year</label>
           <input id="publishingYear" type="number" min="0" max="2025" placeholder="Publishing year">
+          </div>
           <div class="adminBtnContainer">
             <button class="adminAdd" type="submit" id="addBookBtn">Add book</button>
           </div>
@@ -57,8 +70,14 @@
           <h2>Add an author</h2>
         </header>
         <form id="form_authors">
-          <input id="authorFirstName" type="text" placeholder="Author first name">
-          <input id="authorLastName" type="text" placeholder="Author last name">
+        <div class="groupInput">
+        <label for="authorFirstName">Author first name</label>
+        <input id="authorFirstName" type="text" placeholder="Author first name">
+        </div>
+        <div class="groupInput">
+        <label for="authorLastName">Author last name</label>
+        <input id="authorLastName" type="text" placeholder="Author last name">
+        </div>
           <div class="adminBtnContainer">
             <button class="adminAdd" type="submit" id="addAuthorBtn">Add author</button>
           </div>
@@ -69,7 +88,10 @@
           <h2>Add a publisher</h2>
         </header>
         <form id="form_publisher">
+        <div class="groupInput">
+        <label for="publisherName">Publisher name</label>
           <input id="publisherName" type="text" placeholder="Publisher name">
+        </div>
           <div class="adminBtnContainer">
             <button class="adminAdd" type="submit" id="addPublisherBtn">Add publisher</button>
           </div>
