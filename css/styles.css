@@ -371,7 +371,7 @@ input:focus {
 
 /* MODAL */
 
-#loaned-book-modal {
+dialog {
     width: 80%;
     max-width: 1024px;
     height: 30%;
@@ -383,7 +383,7 @@ input:focus {
     border: none;
     box-shadow: var(--shadows);
 
-    #modal-content {
+    #modalContent {
 
         header {
             gap: 1rem;
@@ -407,4 +407,11 @@ input:focus {
             font-size: 1.5rem;
         }
     }
+}
+
+.deleteBtn{
+    background: var(--errorColor);
+}
+.deleteBtn:hover{
+background-color: var(--errorColorHover);
 }
