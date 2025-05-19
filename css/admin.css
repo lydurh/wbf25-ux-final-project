@@ -1,3 +1,6 @@
+@import 'forms.css';
+@import 'styles.css';
+
 main {
     display: flex;
     max-width: 100%;
@@ -46,12 +49,14 @@ main {
             margin-top: auto;
         }
         #authorId, #publisherId {
-            padding: 1rem;
+            width: 100%;
+            padding: 0.75rem;
             border-radius: 0.5rem;
             background-color: var(--bookCardBg);
             color: var(--subTextColor);
             border: none;
             box-shadow: var(--shadows);
+            box-sizing: border-box;
         }
         .adminAdd {
             width: 100%;
@@ -67,7 +72,6 @@ main {
     }
     article {
         margin: 1rem;
-        /*border: solid 1px;*/
         flex: 1 1 calc(33.333% - 1rem); 
         max-width: calc(33.333% - 1rem);
         display: flex;

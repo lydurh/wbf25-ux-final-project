@@ -64,6 +64,7 @@ button:hover {
     background-color: var(--CTAhover);
 }
 
+
 /*  NAV BAR  */
 nav {
     display: flex;
@@ -76,11 +77,11 @@ nav {
     box-shadow: var(--shadows);
     z-index: 100;
     flex-wrap: wrap;
-    text-align: right;
+    text-align: center;
 
     #auth-links {
-        width: 203px;
 
+        flex: 1;
         ul {
             
             align-items: flex-end !important;
@@ -88,6 +89,7 @@ nav {
     }
 
     .logo {
+        flex: 1;
         height: 50px;
         width: auto;
         display: flex;
