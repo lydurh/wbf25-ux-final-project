@@ -23,7 +23,7 @@ main {
     .img-con {
         width: 100%;
         height: 100%;
-        padding: 1rem;
+        padding: 1rem 1rem 0 1rem;
         
 
         img {
@@ -139,6 +139,7 @@ section#loan-history-section {
                 width: 200px;
                 height: 300px;
                 flex-shrink: 0;
+                padding: 1rem;
 
                 img {
                     width: 100%;
