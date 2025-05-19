@@ -23,8 +23,7 @@ import { header } from './api.js';
     document.querySelector('section').remove();
     document.querySelector('h1').innerText = "You're not allowed on this page"
   }
-    console.log('User ID:', user_id);
-    console.log('Token:', user_token);
+    
 
     const response = await fetch(`${BASE_URL}/users/${user_id}`, {
       headers: {
@@ -40,7 +39,7 @@ import { header } from './api.js';
 
     const data = await response.json();
     const profile = document.createDocumentFragment();
-    console.log(data);
+   
     document.querySelector('#profile-header').innerText = `Hi ${data.first_name}`;
     document.querySelector('#membershipDate').innerText = data.membership_date;
     document.querySelector('#firstName').value = data.first_name;
@@ -150,7 +149,6 @@ document.querySelector('#deleteOpenModal').addEventListener('click', function (e
 function deleteUser() {
   let user_id = sessionStorage.getItem("user_id");
 
-  console.log(`delete user with id ${user_id}`);
   if (!user_id) {
     alert("User ID not found. Please log in again.");
     return;

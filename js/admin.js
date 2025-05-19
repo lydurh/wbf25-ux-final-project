@@ -26,11 +26,7 @@ if (user_id != adminID) {
       body: params,
       headers: header
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-
-      });
+   
   })
 
 
@@ -104,11 +100,7 @@ if (user_id != adminID) {
       body: params,
       headers: header
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-
-      });
+     
   })
 
   document.querySelector('#form_authors').addEventListener('submit', (e) => {
@@ -131,10 +123,6 @@ if (user_id != adminID) {
       body: params,
       headers: header
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-
-      });
+      
   })
 }

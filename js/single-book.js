@@ -31,8 +31,7 @@ const showBook = async () => {
     const img = document.querySelector('#cover');
     img.setAttribute('src', data.cover ? data.cover : 'img/bookcover.webp');
     img.setAttribute('alt', `${data.title}`);
-    console.log(author)
-    console.log(data)
+    
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -117,7 +116,6 @@ const LoanHistory = async () => {
     }
   });
   const data = await response.json();
-  console.log(data)
   const loans = data.loans.reverse();
 
   const fragment = document.createDocumentFragment();
