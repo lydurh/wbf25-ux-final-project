@@ -17,13 +17,15 @@ section#landingPage {
     display: flex;
     flex-direction: column;
 
-    > header {
-        font-size: 1.5rem;
+    header {
         margin-bottom: 1rem;
+        h2 {
+            font-size: 3rem;
+        }
     }
 
     p {
-        font-size: 1rem;
+        font-size: 1.2rem;
         max-width: 42ch;
     }
 }
@@ -83,15 +85,7 @@ section#landingPage {
         text-align: left;
         height: 300px;
         
-        div{
-        > header {
-            font-size: 2rem;
-            padding-bottom: 0.5rem;
-        }
-        p{
-            font-size: 1.5rem;
-            }
-        }
+       
         
         .CTA {
             margin-top: auto;

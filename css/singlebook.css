@@ -111,7 +111,6 @@ section#loan-history-section {
             padding: 1rem 0;
             justify-content: space-between;
             text-align: start;
-            font-size: var(--fontSizeMobileTitleCard);
         }
 
         tbody tr {
@@ -121,7 +120,7 @@ section#loan-history-section {
         tbody td {
             padding: 1rem 0;
             color: var(--titleColor);
-            font-size: 0.8rem;
+            font-size: var(--fontSizeP);
             font-family: var(--bodyFont);
 
 
@@ -207,5 +206,5 @@ section#loan-history-section {
 }
 
 .bookName{
-    font-weight: bold;
+    font-weight: var(--boldFontWeight);
 }

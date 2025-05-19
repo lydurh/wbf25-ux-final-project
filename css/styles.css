@@ -27,7 +27,7 @@ h1,
 h2 {
     font-family: var(--headerFont);
     color: var(--titleColor);
-    font-weight: 700;
+    font-weight: var(--boldFontWeight);
 }
 
 h1 {
@@ -59,7 +59,7 @@ ul,
 li {
     font-family: var(--bodyFont);
     color: var(--titleColor);
-    font-weight: 400;
+    font-weight: var(--normalFontWeight);
     font-optical-sizing: auto;
     font-variation-settings: "wdth" 100;
 }
@@ -120,7 +120,7 @@ nav {
             color: var(--titleColor);
             font-size: var(--fontSizeTitleCard);
             font-family: var(--headerFont);
-            font-weight: bold;
+            font-weight: var(--boldFontWeight);
         }
         div{
 
@@ -163,7 +163,7 @@ nav {
                 text-decoration: none;
                 font-family: var(--bodyFont);
                 color: var(--titleColor);
-                font-size: 1rem;
+
             }
 
             button {
@@ -211,12 +211,12 @@ nav {
 
         li {
             display: inline;
-            font-size: initial;
+
             
         }
 
         li:last-of-type {
-            font-size: 1.2rem;
+            font-weight: var(--boldFontWeight);
         }
 
         li+li:before {
@@ -262,7 +262,7 @@ footer {
             color: var(--titleColor);
             font-size: var(--fontSizeTitleCard);
             font-family: var(--headerFont);
-            font-weight: bold;
+            font-weight: var(--boldFontWeight);
             width: 100%;
         }
         div{
@@ -281,7 +281,6 @@ footer {
         font-family: var(--bodyFont);
         font-size: var(--fontSizeP);
         color: var(--titleColor);
-        font-size: 1rem;
         order: 1;
     }
 
@@ -300,7 +299,6 @@ footer {
                 text-decoration: none;
                 font-family: var(--bodyFont);
                 color: var(--titleColor);
-                font-size: 1rem;
 
             }
         }

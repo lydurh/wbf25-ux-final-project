@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 :root {
     /* COLORS */
@@ -18,13 +18,18 @@
     --bodyFont: 'Open Sans', Arial, sans serif;
 
     --h1FontSizeDekstop: 1.7rem;
-    --h2FontSizeDekstop: 1rem;
-    --h1FontSizeMobile: 1.3rem;
-    --h2FontSizeMobile: 0.7rem;
+    --h2FontSizeDekstop: 1.5rem;
+    --h1FontSizeMobile: 1.5rem;
+    --h2FontSizeMobile: 1.3rem;
+    --heroFontSize: 2rem;
     --fontSizeTitleCard: 1.3rem;
     --fontSizeP: 0.8rem;
     --fontSizeMobileTitleCard: 1rem;
     --fontSizeMobileP: 0.6rem;
+
+    --normalFontWeight: 400;
+    --mediumFontWeight: 600;
+    --boldFontWeight: 700;
 
     --shadows: 2px 3px 10px 0px rgba(0, 0, 0, 0.26);
 }

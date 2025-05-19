@@ -14,6 +14,10 @@ main {
     min-height: auto;
 }
 
+header {
+    padding-bottom: 1rem;
+}
+
 
 article.author {
     background-color: var(--bookCardBg);
@@ -38,7 +42,7 @@ article.author {
     a {
 
         font-family: var(--headerFont);
-        font-size: 1.4rem;
+        font-size: var(--fontSizeTitleCard);
         color: var(--bodyTextColor);
         text-decoration: none;
         display: flex;
