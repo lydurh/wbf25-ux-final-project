@@ -104,11 +104,13 @@ nav {
             font-family: var(--headerFont);
             font-weight: bold;
         }
+        div{
 
-        img {
-            height: 50px;
-            width: 50px;
- 
+            img {
+                height: 50px;
+                width: 50px;
+                
+            }
         }
     }
 
@@ -231,7 +233,7 @@ footer {
     gap: 1rem;
 
     .logo {
-         height: 50px;
+        height: 50px;
         width: 50px;
 
         a {
@@ -246,11 +248,13 @@ footer {
             font-weight: bold;
             width: 100%;
         }
+        div{
 
-        img {
-            height: 50px;
-            width: 50px;
-
+            img {
+                height: 50px;
+                width: 50px;
+                
+            }
         }
     }
 
