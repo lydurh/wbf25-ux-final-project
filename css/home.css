@@ -27,25 +27,11 @@ section#landingPage {
     p {
         font-size: 1.2rem;
         max-width: 42ch;
+        margin-bottom: 1rem;
     }
 }
 
-        .CTA {
-        background-color: var(--CTAColor);
-        color: var(--bookCardBg);
-        text-decoration: none;
-        border-radius: 0.5rem;
-        padding: 1rem 4rem;
-        margin-top: 3rem;
-        text-align: center;
-        font-size: 1rem;
-        box-shadow: var(--shadows);
-        transition: 300ms;
 
-        &:hover {
-            background-color: var(--CTAhover);
-        }
-    }
     
         #img-container img {
         display: none;

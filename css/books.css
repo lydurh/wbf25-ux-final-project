@@ -63,14 +63,9 @@ main {
 
 
                 a {
-                    text-decoration: none;
+
                     background-color: var(--titleColor);
-                    color: var(--bookCardBg);
-                    padding: 1rem;
-                    border-radius: 0.5rem;
-                    text-align: center;
-                    justify-content: end;
-                    transition: 300ms;
+                  
                 }
 
                 a:hover {

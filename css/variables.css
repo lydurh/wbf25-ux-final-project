@@ -24,7 +24,12 @@
     --heroFontSize: 2rem;
     --fontSizeTitleCard: 1.3rem;
     --fontSizeP: 0.8rem;
+<<<<<<< HEAD
     --fontSizeMobileTitleCard: 1.2rem;
+=======
+    --fontSizeButton: 1rem;
+    --fontSizeMobileTitleCard: 1rem;
+>>>>>>> dfc17cc (global styling for button)
     --fontSizeMobileP: 0.6rem;
 
     --normalFontWeight: 400;

@@ -57,25 +57,26 @@ p,
 a,
 ul,
 li {
+    text-decoration: none;
     font-family: var(--bodyFont);
     color: var(--titleColor);
     font-weight: var(--normalFontWeight);
-    font-optical-sizing: auto;
-    font-variation-settings: "wdth" 100;
 }
 
-button {
+.button {
     border: none;
     background-color: var(--CTAColor);
     color: var(--bookCardBg);
-    padding: 1rem;
+    padding: 1rem 4rem;
+    text-align: center;
     border-radius: 0.5rem;
     box-shadow: var(--shadows);
     transition: 300ms;
     cursor: pointer;
+    font-size: var(--fontSizeButton);
 }
 
-button:hover {
+.button:hover {
     background-color: var(--CTAhover);
 }
 
