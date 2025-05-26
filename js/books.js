@@ -1,143 +1,134 @@
 import { BASE_URL } from "./info.js";
 
-export const fetchBooks = async (num = null, query = '') => {
-  const url = query
-    ? `${BASE_URL}/books?s=${query}`
-    : num
-    ? `${BASE_URL}/books?n=${num}`
-    : `${BASE_URL}/books`;
-
+// Fetch the books from the api
+const fetchBooks = async (num = null, searchTerm = null) => {
+  let url = `${BASE_URL}/books`;
+  const params = new URLSearchParams();
+  
+  // Add search parameter if provided
+  if (searchTerm) {
+    params.append('s', searchTerm);
+  }
+  // Add number parameter only if no search term (for random books)
+  if (num && !searchTerm) {
+    params.append('n', num);
+  }
+  // Append query parameters to URL if any exist
+  if (params.toString()) {
+    url += `?${params.toString()}`;
+  }
   const response = await fetch(url);
   const data = await response.json();
   return data;
 };
 
-export const fetchDetailedBook = async (bookId) => {
-  try {
-    const response = await fetch(`${BASE_URL}/books/${bookId}`);
-    const data = await response.json();
-    return { ...data, book_id: bookId };
-  } catch (error) {
-    return null;
-  }
+// Fetch detailed information for a single book by ID
+const fetchDetailedBook = async (bookId) => {
+  const response = await fetch(`${BASE_URL}/books/${bookId}`);
+  const data = await response.json();
+  return { ...data, book_id: bookId };
 };
 
-export const fetchAllDetailedBooks = async (books) => {
+// Fetches detailed information for multiple books 
+const fetchAllDetailedBooks = async (books) => {
   if (!Array.isArray(books)) return [];
-
   return Promise.all(
     books.map(book => fetchDetailedBook(book.book_id))
   );
 };
 
-export const renderBooks = async (detailedBooks, searchTerm = ' ') => {
+// Render all the books 
+const renderBooks = (detailedBooks) => {
   if (!Array.isArray(detailedBooks)) return;
-
   const fragment = document.createDocumentFragment();
-
   detailedBooks.forEach(fullBook => {
     if (!fullBook) return;
-
     const template = document.querySelector('.book-card');
     if (!template) return;
-
     const card = template.content.cloneNode(true);
-    card.firstElementChild.classList.add('book-card-element');
-
     card.querySelector('h2').innerText = fullBook.title;
     card.querySelector('.author').innerText = fullBook.author;
     card.querySelector('.year').innerText = fullBook.publishing_year;
     card.querySelector('.publisher').innerText = fullBook.publishing_company;
-    // card.querySelector('img').src = fullBook.cover || 'img/bookcover.webp';
-    // card.querySelector('img').alt = fullBook.title;
-
     card.querySelectorAll('img').forEach(image => {
       image.src = fullBook.cover || 'img/bookcover.webp';
       image.alt = fullBook.title;
-    })
-
+    });
     card.querySelectorAll('a').forEach(link => {
       link.href = `single-book.html?id=${fullBook.book_id}`;
     });
-
     fragment.append(card);
   });
-
   const list = document.querySelector('#book-list');
   list.append(fragment);
 };
 
-export const showRandomBooks = async () => {
+// Displays random books 
+const showRandomBooks = async (append = false) => {
   const NUM_BOOKS = 10;
-
-  try {
-    const books = await fetchBooks(NUM_BOOKS);
-    const detailedBooks = await fetchAllDetailedBooks(books);
-    renderBooks(detailedBooks);
-  } catch (error) {
-    // Handle errors silently
-  }
-};
-
-export const searchBooks = async (searchTerm) => {
   const showMoreButton = document.querySelector(".show-more-button");
   const list = document.querySelector('#book-list');
+  if (!append && list) {
+    list.innerHTML = '';
+  }
+  if (showMoreButton) showMoreButton.style.display = 'block';
+  
+  const books = await fetchBooks(NUM_BOOKS);
+  const detailedBooks = await fetchAllDetailedBooks(books);
+  renderBooks(detailedBooks);
+  
+};
 
-  if (list) list.innerHTML = '';
-
-  if (!searchTerm.trim()) {
-    showRandomBooks();
-    if (showMoreButton) showMoreButton.style.display = 'block';
+// Search for books based on user input
+const searchBooks = async (searchTerm) => {
+  const list = document.querySelector('#book-list');
+  const showMoreButton = document.querySelector(".show-more-button");
+  
+ // If search is empty, show random books instead
+    if (!searchTerm.trim()) {
+    if (list) list.innerHTML = '';
+    await showRandomBooks(false); 
     return;
   }
+  
+  // Fetch books matching the search term
+  const books = await fetchBooks(null, searchTerm);
+  const detailedBooks = await fetchAllDetailedBooks(books);
 
-  try {
-    const books = await fetchBooks(null, searchTerm);
-
-    if (!books || books.length === 0) {
-      list.innerHTML = '<p>No books found matching your search.</p>';
-      if (showMoreButton) showMoreButton.style.display = 'none';
-      return;
-    }
-
-    const detailedBooks = await fetchAllDetailedBooks(books);
-    renderBooks(detailedBooks);
-
-    if (showMoreButton) showMoreButton.style.display = 'none';
-  } catch (error) {
-    list.innerHTML = '<p>An error occurred while searching. Please try again.</p>';
+  // Clear current books and render search results
+  list.innerHTML = "";
+  renderBooks(detailedBooks);
+  if (showMoreButton) showMoreButton.style.display = 'none';
+  if (detailedBooks.length === 0) {
+    list.innerHTML = '<p>No books found matching your search.</p>';
   }
 };
 
-const initializeSearch = () => {
+document.addEventListener('DOMContentLoaded', () => {
+
   const searchInput = document.querySelector('#search-input');
-  if (!searchInput) return;
+  searchInput.value = ""; // Clear any previous  value
+  let debounceTimer; // Timer for debouncing search input
+  
+  if (searchInput) {
 
-  searchInput.value = '';
-  let debounceTimer;
-
-  searchInput.addEventListener('input', (event) => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => {
+    searchInput.addEventListener('input', (event) => {
       const searchTerm = event.target.value;
-      searchBooks(searchTerm);
-    }, 300);
-  });
-};
-
-const initializeApp = () => {
-  initializeSearch();
+      
+      // Clear previous timer and set new one (debouncing)
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(async () => {
+        await searchBooks(searchTerm);
+      }, 300); // Wait 300ms after user stops typing
+    });
+  }
+  
 
   const showMoreButton = document.querySelector(".show-more-button");
   if (showMoreButton) {
-    showMoreButton.addEventListener('click', showRandomBooks);
+    showMoreButton.addEventListener('click', () => showRandomBooks(true));
   }
+  
 
-  showRandomBooks();
-};
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeApp);
-} else {
-  initializeApp();
-}
+  showRandomBooks(false);
+});
